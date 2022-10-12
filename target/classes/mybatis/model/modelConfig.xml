@@ -6,6 +6,6 @@
   
 <configuration>
 	<typeAliases>
-	
+		<typeAlias type="kr.guri.restaurant.main.dto.RestaurantDTO" alias="restaurantDTO"/>
 	</typeAliases>
 </configuration>

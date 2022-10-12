@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mapper.restaurant">
+	<resultMap type="restaurantDTO" id="rtResult">
+		<result property="gr_num" column="gr_num"/>
+		<result property="business_name" column="business_name"/>
+		<result property="location" column="location"/>
+		<result property="location_tel" column="location_tel"/>
+		<result property="gr_img" column="gr_img"/>
+	</resultMap>
+	
+	<select id="showrestaurant" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT *
+			FROM GURI_RESTAURANT
+		]]>
+	</select>
+</mapper>
