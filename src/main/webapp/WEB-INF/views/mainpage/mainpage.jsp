@@ -21,33 +21,47 @@
 		table img {
 			width: 300px;
 			height: 200px;
+			margin-right: 20px;
+		}
+		
+		h1 {
+			font-size: 50px;
+		}
+		
+		#itembox_1 {
+			margin: 20px;
+		}
+		
+		#itembox_2 {
+			margin: 20px;
 		}
     </style>
 </head>
 <body>
-	<table>	
+	<h1 align="center">구리 음식점</h1>
+	<table id="itembox_1">	
 		<tr>
 			<c:forEach var="list" items="${showRt }" begin="0" end="2">
 				<td>
-					<div>
+					<div >
 						<img src="${list.gr_img }">
 					</div>
-					<div>
-						${list.business_name }
+					<div align="center">
+						<a href="${contextPath}/showpage?gr_num=${list.gr_num}">${list.business_name }</a>
 					</div>
 				</td>
 			</c:forEach>
 		</tr>
 	</table>
-	<table>
+	<table id="itembox_2">
 		<tr>
 			<c:forEach var="list" items="${showRt }" begin="3" end="5">
 				<td>
 					<div>
 						<img src="${list.gr_img }">
 					</div>
-					<div>
-						${list.business_name }
+					<div align="center">
+						<a href="${contextPath}/showpage?gr_num=${list.gr_num}">${list.business_name }</a>
 					</div>
 				</td>
 			</c:forEach>

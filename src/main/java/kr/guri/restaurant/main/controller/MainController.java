@@ -16,14 +16,24 @@ public class MainController {
 	@Autowired
 	private RestaurantService restaurantService;
 	
-	@GetMapping
+	@GetMapping(value = "/mainpage")
 	public String main(Model model) throws Exception {
 		
-		List<RestaurantDTO> restaurantList = restaurantService.showRestaurant();
+		List<RestaurantDTO> restaurantList = restaurantService.listRestaurant();
 		
 		model.addAttribute("showRt", restaurantList);
 		
 		return "mainpage/mainpage";
+	}
+	
+	@GetMapping(value = "/showpage")
+	public String showrestaurant(RestaurantDTO restaurantDTO, Model model) throws Exception {
+		
+		RestaurantDTO showrestaurant = restaurantService.showRestaurant(restaurantDTO);
+		
+		model.addAttribute("showRt", showrestaurant);
+		
+		return "viewpage/restaurantview";
 	}
 	
 

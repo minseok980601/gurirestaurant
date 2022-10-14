@@ -15,7 +15,11 @@ public class RestaurantService {
 	@Autowired
 	private RestaurantDAO restaurantDAO;
 	
-	public List<RestaurantDTO> showRestaurant() throws DataAccessException {
-		return restaurantDAO.showRestaurant();
+	public List<RestaurantDTO> listRestaurant() throws DataAccessException {
+		return restaurantDAO.listRestaurant();
+	}
+	
+	public RestaurantDTO showRestaurant(RestaurantDTO restaurantDTO) throws DataAccessException {
+		return restaurantDAO.showRestaurant(restaurantDTO);
 	}
 }

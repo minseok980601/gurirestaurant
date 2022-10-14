@@ -15,7 +15,11 @@ public class RestaurantDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<RestaurantDTO> showRestaurant() throws DataAccessException {
-		return sqlSession.selectList("mapper.restaurant.showrestaurant");
+	public List<RestaurantDTO> listRestaurant() throws DataAccessException {
+		return sqlSession.selectList("mapper.restaurant.listrestaurant");
+	}
+	
+	public RestaurantDTO showRestaurant(RestaurantDTO restaurantDTO) throws DataAccessException {
+		return sqlSession.selectOne("mapper.restaurant.showrestaurant", restaurantDTO);
 	}
 }

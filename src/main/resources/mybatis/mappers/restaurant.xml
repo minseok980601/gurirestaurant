@@ -12,10 +12,18 @@
 		<result property="gr_img" column="gr_img"/>
 	</resultMap>
 	
-	<select id="showrestaurant" resultType="restaurantDTO">
+	<select id="listrestaurant" resultType="restaurantDTO">
 		<![CDATA[
 			SELECT *
 			FROM GURI_RESTAURANT
+		]]>
+	</select>
+	
+	<select id="showrestaurant" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT BUSINESS_NAME, LOCATION, LOCATION_TEL, GR_IMG, LATITUDE, LONGITUDE 
+			FROM GURI_RESTAURANT
+			WHERE GR_NUM = #{gr_num}
 		]]>
 	</select>
 </mapper>

@@ -10,17 +10,21 @@ public class RestaurantDTO {
 	private String location;
 	private String location_tel;
 	private String gr_img;
+	private String latitude;
+	private String longitude;
 	
 	public RestaurantDTO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public RestaurantDTO(int gr_num, String business_name, String location, String location_tel, String gr_img) {
+	public RestaurantDTO(int gr_num, String business_name, String location, String location_tel, String gr_img, String latitude, String longitude) {
 		this.gr_num = gr_num;
 		this.business_name = business_name;
 		this.location = location;
 		this.location_tel = location_tel;
 		this.gr_img = gr_img;
+		this.latitude= latitude;
+		this.longitude = longitude;
 	}
 	
 	public int getGr_num() {
@@ -53,6 +57,21 @@ public class RestaurantDTO {
 	public void setGr_img(String gr_img) {
 		this.gr_img = gr_img;
 	}
-	
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
 	
 }
