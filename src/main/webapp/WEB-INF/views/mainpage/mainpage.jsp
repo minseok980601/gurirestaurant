@@ -39,6 +39,23 @@
 </head>
 <body>
 	<h1 align="center">구리 음식점</h1>
+	<form action="${contextPath}/login" method="post">
+		<div align="right">
+			<c:choose>
+				<c:when test="${loginMember.id == null }">
+					<b>아이디 : </b>
+					<input type="text" name="id" id="id">
+					<b>비밀번호 : </b>
+					<input type="text" name="pwd" id="pwd">
+					<input type="submit" value="로그인">
+				</c:when>
+				<c:otherwise>
+					<a>${loginMember.nick_nm }님 반갑습니다.</a>	
+					<a href="${contectPath}/mypage">마이페이지</a>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</form>
 	<table id="itembox_1">	
 		<tr>
 			<c:forEach var="list" items="${showRt }" begin="0" end="2">
