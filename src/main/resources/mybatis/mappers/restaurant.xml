@@ -10,6 +10,9 @@
 		<result property="location" column="location"/>
 		<result property="location_tel" column="location_tel"/>
 		<result property="gr_img" column="gr_img"/>
+		<result property="latitude" column="latitude"/>
+		<result property="longitude" column="longitude"/>
+		<result property="heart" column="heart"/>
 	</resultMap>
 	
 	<select id="listrestaurant" resultType="restaurantDTO">
@@ -26,4 +29,13 @@
 			WHERE GR_NUM = #{gr_num}
 		]]>
 	</select>
+	
+	<update id="steamedHeart" parameterType="int">
+		<![CDATA[
+			UPDATE GURI_RESTAURANT 
+			SET HEART = HEART + 1
+			WHERE GR_NUM = #{gr_num}
+		]]>
+	</update>
+	 
 </mapper>

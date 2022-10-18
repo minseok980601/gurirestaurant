@@ -1,6 +1,8 @@
 package kr.guri.restaurant.main.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +23,33 @@ public class RestaurantDAO {
 	
 	public RestaurantDTO showRestaurant(RestaurantDTO restaurantDTO) throws DataAccessException {
 		return sqlSession.selectOne("mapper.restaurant.showrestaurant", restaurantDTO);
+	}
+	
+	// 찜 추가
+	public void heartRestaurant(int gr_no, String id) throws DataAccessException {
+		Map<String, Object> heart = new HashMap<String, Object>();
+		heart.put("id", id);
+		heart.put("gr_no", gr_no);
+		sqlSession.insert("mapper.heart.heartRestaurant", heart);
+	}
+	
+	public void restaurantUpHeart(int gr_num) throws DataAccessException {
+		sqlSession.update("mapper.heart.restaurantUpHeart", gr_num);
+	}
+	
+	// 찜 1로 만들어서 중복 방지 
+	public int heartRestaurantCheck(int gr_no, String id) throws Exception {
+		Map<String, Object> heart = new HashMap<String, Object>();
+		heart.put("id", id);
+		heart.put("gr_no", gr_no);
+		return sqlSession.selectOne("mapper.heart.heartUpdateCheck", heart);
+	}
+	
+	// 찜 중복 방지
+	public int heartCheck(int gr_no, String id) throws Exception {
+		Map<String, Object> heart = new HashMap<String, Object>();
+		heart.put("id", id);
+		heart.put("gr_no", gr_no);
+		return sqlSession.selectOne("mapper.heart.heartCheck", heart);
 	}
 }

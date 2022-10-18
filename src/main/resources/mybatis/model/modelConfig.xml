@@ -8,5 +8,6 @@
 	<typeAliases>
 		<typeAlias type="kr.guri.restaurant.main.dto.RestaurantDTO" alias="restaurantDTO"/>
 		<typeAlias type="kr.guri.restaurant.member.dto.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="kr.guri.restaurant.main.dto.HeartDTO" alias="heartDTO"/>
 	</typeAliases>
 </configuration>

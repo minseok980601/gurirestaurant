@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d315ab8ef068b674b5187aae93872661"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style type="text/css">
     	* {
     		margin: 0;
@@ -65,6 +68,20 @@
 		<tr>
 			<td>가게 번호 : ${showRt.location_tel }</td>
 		</tr>
+		<c:choose>
+			<c:when test="${loginMember.id != null}">
+				<tr>
+					<td>
+						<strong>찜하기
+							<button onclick="updateSteamed()" style="background-color: #9966ff;  
+								border: 2px solid #9966ff; border-radius: 7px; width: 30px; cursor: pointer;">
+								🧡
+							</button> : ${showRt.heart }
+						</strong>
+					</td>
+				</tr>
+			</c:when>
+		</c:choose>
 	</table>
 	</div>
 	<div id="map" style="width:800px; height:300px;"></div>
@@ -113,6 +130,29 @@
 		
 		// 마커 위에 인포윈도우를 표시. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시
 		infowindow.open(map, marker);
+	</script>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		function updateSteamed() {
+			$.ajax({
+				type : 'post',
+				url : "${contextPath}/steamrestaurant",
+				dataType : "json",
+				data : {"gr_no" : "${showRt.gr_num}", "id" : "${loginMember.id}"},
+				error : function () {
+					alert("통신 에러");
+				},
+				success : function (steamedCheck) {
+					if(steamedCheck == 0) {
+						alert("찜하기 완료.");
+						location.href = "${contextPath}/showpage?gr_num=${list.gr_num}";
+					}
+				}
+			})
+		}
+
 	</script>
 </body>
 </html>
