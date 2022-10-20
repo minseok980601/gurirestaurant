@@ -24,13 +24,13 @@
 	
 	<select id="showrestaurant" resultType="restaurantDTO">
 		<![CDATA[
-			SELECT BUSINESS_NAME, LOCATION, LOCATION_TEL, GR_IMG, LATITUDE, LONGITUDE 
+			SELECT BUSINESS_NAME, LOCATION, LOCATION_TEL, GR_IMG, LATITUDE, LONGITUDE , GR_NUM
 			FROM GURI_RESTAURANT
 			WHERE GR_NUM = #{gr_num}
 		]]>
 	</select>
 	
-	<update id="steamedHeart" parameterType="int">
+	<update id="restaurantUpHeart" parameterType="int">
 		<![CDATA[
 			UPDATE GURI_RESTAURANT 
 			SET HEART = HEART + 1

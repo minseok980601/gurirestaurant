@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.guri.restaurant.main.dto.RestaurantDTO;
 import kr.guri.restaurant.main.service.RestaurantService;
@@ -38,14 +39,15 @@ public class MainController {
 	}
 	
 	@PostMapping(value = "/steamrestaurant")
-	public int steamRestaurant(int gr_no, String id) throws Exception {
+	@ResponseBody
+	public int steamRestaurant(int gr_num, String id) throws Exception {
 		
-		int steamedCheck = restaurantService.heartCheck(gr_no, id);
+		int steamedCheck = restaurantService.heartCheck(gr_num, id);
 		
 		if(steamedCheck == 0) {
-			restaurantService.heartRestaurant(gr_no, id); 	// 찜 삽입
-			restaurantService.restaurantUpHeart(gr_no); 	// 가게 테이블 + 1
-			restaurantService.heartRestaurantCheck(gr_no, id); 	// 찜 테이블 구분 1
+			restaurantService.heartRestaurant(gr_num, id); 	// 찜 삽입
+			restaurantService.restaurantUpHeart(gr_num); 	// 가게 테이블 + 1
+			restaurantService.heartRestaurantCheck(gr_num, id); 	// 찜 테이블 구분 1
 		} 
 		
 		return steamedCheck;

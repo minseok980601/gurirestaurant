@@ -67,6 +67,7 @@
 		</tr>
 		<tr>
 			<td>가게 번호 : ${showRt.location_tel }</td>
+			<td>가게 번호2 : ${showRt.gr_num }</td>
 		</tr>
 		<c:choose>
 			<c:when test="${loginMember.id != null}">
@@ -140,7 +141,7 @@
 				type : 'post',
 				url : "${contextPath}/steamrestaurant",
 				dataType : "json",
-				data : {"gr_no" : "${showRt.gr_num}", "id" : "${loginMember.id}"},
+				data : {"gr_num" : "${showRt.gr_num}", "id" : "${loginMember.id}"},
 				error : function () {
 					alert("통신 에러");
 				},
@@ -150,7 +151,7 @@
 						location.href = "${contextPath}/showpage?gr_num=${list.gr_num}";
 					}
 				}
-			})
+			});
 		}
 
 	</script>

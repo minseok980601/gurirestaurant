@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="mapper.herat">
+<mapper namespace="mapper.heart">
 	<resultMap type="heartDTO" id="heartResult">
 		<result property="h_no" column="h_no"/>
-		<result property="gr_no" column="gr_no"/>
+		<result property="gr_num" column="gr_num"/>
 		<result property="id" column="id"/>	
 		<result property="steamcheck" column="steamcheck"/>
 	</resultMap>
@@ -15,7 +15,7 @@
 		<![CDATA[
 			SELECT *
 			FROM GR_HEART
-			WHERE GR_NO = #{gr_no} AND ID = #{kim}
+			WHERE gr_num = #{gr_num} AND ID = #{kim}
 		]]>
 	</select>
 	
@@ -24,7 +24,7 @@
 		<![CDATA[
 			UPDATE GR_HEART 
 			SET steamcheck = 1
-			WHERE gr_no = #{gr_no} AND id = #{id}
+			WHERE gr_num = #{gr_num} AND id = #{id}
 		]]>
 	</update>
 	
@@ -32,22 +32,14 @@
 		<![CDATA[
 			select count(*)
 			from gr_heart
-			where gr_no = #{gr_no} and id = #{id}
+			where gr_num = #{gr_num} and id = #{id}
 		]]>
 	</select>
 	
-	<update id="restaurantUpHeart" parameterType="int">
-		<![CDATA[
-			UPDATE GURI_RESTAURANT 
-			SET HEART = HEART + 1
-			WHERE GR_NUM = #{gr_num}
-		]]>
-	</update>
-	
 	<insert id="heartRestaurant" parameterType="java.util.Map">
 		<![CDATA[
-			INSERT INTO GR_HEART (h_no, gr_no, id)
-			values((SELECT NVL(MAX(h_no), 0) + 1 FROM GR_HEART), #{gr_no}, #{id})
+			INSERT INTO GR_HEART (h_no, gr_num, id)
+			values((SELECT NVL(MAX(h_no), 0) + 1 FROM GR_HEART), #{gr_num}, #{id})
 		]]>
 	</insert>
 </mapper>

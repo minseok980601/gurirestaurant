@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class HeartDTO {
 	
 	private int h_no;
-	private int gr_no;
+	private int gr_num;
 	private String id;
 	private int steamcheck;
 	
@@ -14,9 +14,9 @@ public class HeartDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public HeartDTO(int h_no, int gr_no, String id, int steamcheck) {
+	public HeartDTO(int h_no, int gr_num, String id, int steamcheck) {
 		this.h_no = h_no;
-		this.gr_no = gr_no;
+		this.gr_num = gr_num;
 		this.id = id;
 		this.steamcheck = steamcheck;
 	}
@@ -27,11 +27,11 @@ public class HeartDTO {
 	public void setH_no(int h_no) {
 		this.h_no = h_no;
 	}
-	public int getGr_no() {
-		return gr_no;
+	public int getGr_num() {
+		return gr_num;
 	}
-	public void setGr_no(int gr_no) {
-		this.gr_no = gr_no;
+	public void setGr_num(int gr_num) {
+		this.gr_num = gr_num;
 	}
 	public String getId() {
 		return id;
