@@ -23,8 +23,8 @@
 	<update id="heartUpdateCheck">
 		<![CDATA[
 			UPDATE GR_HEART 
-			SET steamcheck = 1
-			WHERE gr_num = #{gr_num} AND id = #{id}
+			SET STEAMCHECK = 1
+			WHERE GR_NUM = #{gr_num} AND ID = #{id}
 		]]>
 	</update>
 	

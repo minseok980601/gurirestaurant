@@ -38,11 +38,11 @@ public class RestaurantDAO {
 	}
 	
 	// 찜 1로 만들어서 중복 방지 
-	public int heartRestaurantCheck(int gr_num, String id) throws Exception {
+	public void heartRestaurantCheck(int gr_num, String id) throws Exception {
 		Map<String, Object> heart = new HashMap<String, Object>();
 		heart.put("id", id);
 		heart.put("gr_num", gr_num);
-		return sqlSession.selectOne("mapper.heart.heartUpdateCheck", heart);
+		sqlSession.selectOne("mapper.heart.heartUpdateCheck", heart);
 	}
 	
 	// 찜 중복 방지

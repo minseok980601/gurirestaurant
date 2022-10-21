@@ -33,8 +33,8 @@ public class RestaurantService {
 	}
 	
 	// 찜 1로 만들어서 중복 방지
-	public int heartRestaurantCheck(int gr_num, String id) throws Exception {
-		return restaurantDAO.heartRestaurantCheck(gr_num, id);
+	public void heartRestaurantCheck(int gr_num, String id) throws Exception {
+		restaurantDAO.heartRestaurantCheck(gr_num, id);
 	}
 	
 	// 찜 중복 방지

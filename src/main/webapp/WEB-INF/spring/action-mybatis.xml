@@ -29,6 +29,7 @@
 		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 	</bean>
 	
+	
 	<!-- SqlSessionTemplate 클래스를 이용해 sqlSession 빈을 생성  -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
