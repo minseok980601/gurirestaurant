@@ -3,11 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title>Shop Item - Start Bootstrap Template</title>
-    <style type="text/css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
     	* {
     		margin: 0;
     		padding: 0;
@@ -17,17 +17,13 @@
 			width: 1060px;
 			margin: 0px auto;
 		}
-		
+
 		table img {
 			width: 300px;
 			height: 200px;
 			margin-right: 20px;
 		}
-		
-		h1 {
-			font-size: 50px;
-		}
-		
+
 		#itembox_1 {
 			margin: 20px;
 		}
@@ -35,30 +31,22 @@
 		#itembox_2 {
 			margin: 20px;
 		}
-    </style>
+</style>
 </head>
 <body>
-	<h1 align="center">구리 음식점</h1>
-	<form action="${contextPath}/login" method="post">
-		<div align="right">
-			<c:choose>
-				<c:when test="${loginMember.id == null }">
-					<b>아이디 : </b>
-					<input type="text" name="id" id="id">
-					<b>비밀번호 : </b>
-					<input type="text" name="pwd" id="pwd">
-					<input type="submit" value="로그인">
-				</c:when>
-				<c:otherwise>
-					<a>${loginMember.nick_nm }님 반갑습니다.</a>	
-					<a href="${contextPath}/mypage?id=${loginMember.id}">마이페이지</a>
-				</c:otherwise>
-			</c:choose>
-		</div>
-	</form>
+	<div>
+		<table id="information_box">
+			<td>
+				<b>${loginMember.id }</b>
+				<b>${loginMember.name }</b>
+				<b>${loginMember.nick_nm }</b>
+				<b>${loginMember.email }</b>
+			</td>
+		</table>
+	</div>
 	<table id="itembox_1">	
 		<tr>
-			<c:forEach var="list" items="${showRt }" begin="0" end="2">
+			<c:forEach var="list" items="${steamList }" begin="0" end="2">
 				<td>
 					<div >
 						<img src="${list.gr_img }">
@@ -72,7 +60,7 @@
 	</table>
 	<table id="itembox_2">
 		<tr>
-			<c:forEach var="list" items="${showRt }" begin="3" end="5">
+			<c:forEach var="list" items="${steamList }" begin="3" end="5">
 				<td>
 					<div>
 						<img src="${list.gr_img }">

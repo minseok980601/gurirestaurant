@@ -11,14 +11,6 @@
 		<result property="steamcheck" column="steamcheck"/>
 	</resultMap>
 	
-	<select id="findHeart" parameterType="java.util.HashMap" resultType="heartDTO">
-		<![CDATA[
-			SELECT *
-			FROM GR_HEART
-			WHERE gr_num = #{gr_num} AND ID = #{kim}
-		]]>
-	</select>
-	
 	<!-- 찜 1로 만들어서 중복 방지 -->
 	<update id="heartUpdateCheck">
 		<![CDATA[
@@ -28,6 +20,7 @@
 		]]>
 	</update>
 	
+	<!-- 찜 중복방지 select 문 -->
 	<select id="heartCheck" resultType="int">
 		<![CDATA[
 			select count(*)
@@ -36,10 +29,29 @@
 		]]>
 	</select>
 	
+	<!-- 음식점 찜시 찜 테이블에 insert -->
 	<insert id="heartRestaurant" parameterType="java.util.Map">
 		<![CDATA[
 			INSERT INTO GR_HEART (h_no, gr_num, id)
 			values((SELECT NVL(MAX(h_no), 0) + 1 FROM GR_HEART), #{gr_num}, #{id})
 		]]>
 	</insert>
+	
+	<!-- 음식점 찜 취소 시 delete -->
+	<delete id="heartDeleteCheck">
+		<![CDATA[
+			DELETE
+			FROM GR_HEART
+			WHERE GR_NUM = #{gr_num} AND ID = #{id}		
+		]]>
+	</delete>
+	
+	<!-- 찜 취소시 다시 0 -->
+	<update id="heartDeleteCheckCancel">
+		<![CDATA[
+			UPDATE GR_HEART
+			SET STEAMCHECK = 0
+			WHERE GR_NUM = #{gr_num} AND ID = #{id}
+		]]>
+	</update>
 </mapper>

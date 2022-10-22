@@ -30,10 +30,20 @@
 		]]>
 	</select>
 	
+	<!-- 음식점 찜시 추천수 증가 -->
 	<update id="restaurantUpHeart" parameterType="int">
 		<![CDATA[
 			UPDATE GURI_RESTAURANT 
 			SET HEART = HEART + 1
+			WHERE GR_NUM = #{gr_num}
+		]]>
+	</update>
+	
+	<!-- 음식점 찜 취소시 추천수 다운 -->
+	<update id="restaurantDownHeart" parameterType="int">
+		<![CDATA[
+			UPDATE GURI_RESTAURANT
+			SET HEART = HEART - 1
 			WHERE GR_NUM = #{gr_num}
 		]]>
 	</update>

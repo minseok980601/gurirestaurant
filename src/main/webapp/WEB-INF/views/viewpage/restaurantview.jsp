@@ -149,6 +149,9 @@
 					if(steamedCheck == 0) {
 						alert("찜하기 완료.");
 						location.href = "${contextPath}/showpage?gr_num=${showRt.gr_num}";
+					} else if (steamedCheck == 1) {
+						alert("찜하기 취소");
+						location.href = "${contextPath}/showpage?gr_num=${showRt.gr_num}";
 					}
 				}
 			});

@@ -45,11 +45,25 @@ public class MainController {
 		int steamedCheck = restaurantService.heartCheck(gr_num, id);
 		
 		if(steamedCheck == 0) {
-			restaurantService.heartRestaurant(gr_num, id); 	// 찜 삽입
+			restaurantService.heartRestaurant(gr_num, id); 	// 찜 1
 			restaurantService.restaurantUpHeart(gr_num); 	// 가게 테이블 + 1
 			restaurantService.heartRestaurantCheck(gr_num, id); 	// 찜 테이블 구분 1
-		} 
+		} else if (steamedCheck == 1) {
+			restaurantService.heartDeleteCheckCancel(gr_num, id);	// 찜 0
+			restaurantService.restaurantDownHeart(gr_num);			// 가게 테이블 -1
+			restaurantService.heartDeleteCheck(gr_num, id);			// 찜 테이블 삭제
+		}
 		
 		return steamedCheck;
+	}
+	
+	@GetMapping(value = "/mypage")
+	public String showMyPage(String id, Model model) throws Exception {
+		
+		List<RestaurantDTO> steamList = restaurantService.MySteamedRestaurant(id);
+		
+		model.addAttribute("steamList", steamList);
+		
+		return "mypage/mypage";
 	}
 }
