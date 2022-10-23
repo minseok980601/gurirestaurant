@@ -84,5 +84,37 @@
 			</c:forEach>
 		</tr>
 	</table>
+	<table id="itembox_2">
+		<tr>
+			<c:forEach var="list" items="${showRt }" begin="6" end="8">
+				<td>
+					<div>
+						<img src="${list.gr_img }">
+					</div>
+					<div align="center">
+						<a href="${contextPath}/showpage?gr_num=${list.gr_num}">${list.business_name }</a>
+					</div>
+				</td>
+			</c:forEach>
+		</tr>
+	</table>
+	<div>
+		<c:if test="${paging.startPage != 1 }">
+			<a href="${contextPath}/mainpage?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="${contextPath}/mainpage?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="${contextPath}/mainpage?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
 </body>
 </html>

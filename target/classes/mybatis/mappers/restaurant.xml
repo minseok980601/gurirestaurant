@@ -30,6 +30,28 @@
 		]]>
 	</select>
 	
+	<select id="countRestaurant" parameterType="kr.guri.restaurant.main.dto.PagingDTO" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM GURI_RESTAURANT
+		]]>
+	</select>
+	
+	<select id="selectRestaurant" resultType="restaurantDTO" parameterType="kr.guri.restaurant.main.dto.PagingDTO">
+		<![CDATA[
+			SELECT *
+			FROM (
+					SELECT ROWNUM RN, A.*
+					FROM (
+							SELECT *
+							FROM GURI_RESTAURANT
+							ORDER BY GR_NUM ASC
+						) A 
+				)
+			WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
+	
 	<!-- 음식점 찜시 추천수 증가 -->
 	<update id="restaurantUpHeart" parameterType="int">
 		<![CDATA[

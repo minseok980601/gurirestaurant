@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
 import kr.guri.restaurant.main.service.RestaurantService;
 
@@ -18,12 +20,37 @@ public class MainController {
 	@Autowired
 	private RestaurantService restaurantService;
 	
+//	@GetMapping(value = "/mainpage")
+//	public String main(Model model) throws Exception {
+//		
+//		List<RestaurantDTO> restaurantList = restaurantService.listRestaurant();
+//		
+//		model.addAttribute("showRt", restaurantList);
+//		
+//		return "mainpage/mainpage";
+//	}
+	
 	@GetMapping(value = "/mainpage")
-	public String main(Model model) throws Exception {
+	public String main(Model model, PagingDTO pagingDTO,
+						@RequestParam(value = "nowPage", required = false)String nowPage,
+						@RequestParam(value = "cntPerPage", required = false)String cntPerPage) throws Exception {
 		
-		List<RestaurantDTO> restaurantList = restaurantService.listRestaurant();
+		int total = restaurantService.countRestaurant(pagingDTO);
 		
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		
+		pagingDTO = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		List<RestaurantDTO> restaurantList = restaurantService.selectRestaurant(pagingDTO);
 		model.addAttribute("showRt", restaurantList);
+		model.addAttribute("paging", pagingDTO);
 		
 		return "mainpage/mainpage";
 	}

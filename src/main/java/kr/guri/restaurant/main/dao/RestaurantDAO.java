@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
 
 @Repository("restaurantDAO")
@@ -23,6 +24,14 @@ public class RestaurantDAO {
 	
 	public RestaurantDTO showRestaurant(RestaurantDTO restaurantDTO) throws DataAccessException {
 		return sqlSession.selectOne("mapper.restaurant.showrestaurant", restaurantDTO);
+	}
+	
+	public int countRestaurant(PagingDTO pagingDTO) throws Exception {
+		return sqlSession.selectOne("mapper.restaurant.countRestaurant", pagingDTO);
+	}
+	
+	public List<RestaurantDTO> selectRestaurant(PagingDTO pagingDTO) throws Exception {
+		return sqlSession.selectList("mapper.restaurant.selectRestaurant", pagingDTO);
 	}
 	
 	// 찜 추가

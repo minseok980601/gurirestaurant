@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import kr.guri.restaurant.main.dao.RestaurantDAO;
+import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
 
 @Service("restaurantService")
@@ -21,6 +22,14 @@ public class RestaurantService {
 	
 	public RestaurantDTO showRestaurant(RestaurantDTO restaurantDTO) throws DataAccessException {
 		return restaurantDAO.showRestaurant(restaurantDTO);
+	}
+	
+	public int countRestaurant(PagingDTO pagingDTO) throws Exception {
+		return restaurantDAO.countRestaurant(pagingDTO);
+	}
+	
+	public List<RestaurantDTO> selectRestaurant(PagingDTO pagingDTO) throws Exception {
+		return restaurantDAO.selectRestaurant(pagingDTO);
 	}
 	
 	// 찜 추가
