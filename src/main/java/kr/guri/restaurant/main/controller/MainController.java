@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.guri.restaurant.main.dto.CommentDTO;
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
 import kr.guri.restaurant.main.service.RestaurantService;
@@ -30,6 +32,11 @@ public class MainController {
 //		return "mainpage/mainpage";
 //	}
 	
+	@GetMapping(value = "/test")
+	public String test() {
+		return "test/test";
+	}
+	
 	@GetMapping(value = "/mainpage")
 	public String main(Model model, PagingDTO pagingDTO,
 						@RequestParam(value = "nowPage", required = false)String nowPage,
@@ -39,11 +46,11 @@ public class MainController {
 		
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "8";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "5";
+			cntPerPage = "8";
 		}
 		
 		pagingDTO = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -52,15 +59,20 @@ public class MainController {
 		model.addAttribute("showRt", restaurantList);
 		model.addAttribute("paging", pagingDTO);
 		
+
+		
 		return "mainpage/mainpage";
 	}
 	
 	@GetMapping(value = "/showpage")
-	public String showrestaurant(RestaurantDTO restaurantDTO, Model model) throws Exception {
+	public String showrestaurant(RestaurantDTO restaurantDTO, Model model, CommentDTO commentDTO) throws Exception {
 		
 		RestaurantDTO showrestaurant = restaurantService.showRestaurant(restaurantDTO);
 		
 		model.addAttribute("showRt", showrestaurant);
+		
+		List<CommentDTO> commentList = restaurantService.restaurantCommentSelect(commentDTO);
+		model.addAttribute("commentList", commentList);
 		
 		return "viewpage/restaurantview";
 	}
@@ -92,5 +104,13 @@ public class MainController {
 		model.addAttribute("steamList", steamList);
 		
 		return "mypage/mypage";
+	}
+	
+	@PostMapping(value ="/commentwrite")
+	public String restaurantCommentWrite(CommentDTO commentDTO, RestaurantDTO restaurantDTO, RedirectAttributes rttr) throws Exception {
+		restaurantService.restaurantCommentWrite(commentDTO);
+		rttr.addAttribute("gr_num", commentDTO.getGr_num());
+		
+		return "redirect:showpage";
 	}
 }

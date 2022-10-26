@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import kr.guri.restaurant.main.dto.CommentDTO;
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
 
@@ -86,5 +87,25 @@ public class RestaurantDAO {
 	
 	public List<RestaurantDTO> MySteamedRestaurant(String id) throws Exception {
 		return sqlSession.selectList("mapper.mypage.MySteamedRestaurant", id);
+	}
+	
+	// 레스토랑 댓글 총 갯수
+	public int restaurantCommentCount(CommentDTO commentDTO) throws Exception {
+		return sqlSession.selectOne("mapper.restaurant.restaurantCommentCount", commentDTO);
+	}
+	
+	// 레스토랑 댓글 조회
+	public List<CommentDTO> restaurantCommentSelect(CommentDTO commentDTO) throws Exception {
+		return sqlSession.selectList("mapper.restaurant.restaurantCommentSelect", commentDTO);
+	}
+	
+	// 레스토랑 댓글 작성
+	public void restaurantCommentWrite(CommentDTO commentDTO) throws Exception {
+		sqlSession.insert("mapper.restaurant.restaurantCommentWrite", commentDTO);
+	}
+	
+	// 레스토랑 댓글 수 증가
+	public int restaurantCommentCountUp(RestaurantDTO restaurantDTO) throws Exception {
+		return sqlSession.update("mapper.restaurant.restaurantCommentCountUp", restaurantDTO);
 	}
 }

@@ -69,5 +69,43 @@
 			WHERE GR_NUM = #{gr_num}
 		]]>
 	</update>
+	
+	<!-- 레스토랑 댓글 총 개수 -->
+	<select id="restaurantCommentCount" parameterType="restaurantDTO" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			FROM GURI_RESTAURANT_COMMENT
+			WHERE GR_NUM = #{gr_num}
+		]]>
+	</select>
 	 
+	<!-- 레스토랑 댓글 조회 -->
+	<select id="restaurantCommentSelect" resultType="kr.guri.restaurant.main.dto.CommentDTO" parameterType="kr.guri.restaurant.main.dto.CommentDTO">
+		<![CDATA[
+			SELECT *
+			FROM GURI_RESTAURANT_COMMENT
+			WHERE GR_NUM = #{gr_num}
+		]]>
+	</select>
+	
+	<!-- 레스토랑 댓글 작성 -->
+	<insert id="restaurantCommentWrite">
+		<selectKey keyProperty="com_num" order="BEFORE" resultType="int">
+			select comment_com_num.nextval
+			from dual
+		</selectKey>
+		<![CDATA[
+			INSERT INTO GURI_RESTAURANT_COMMENT(COM_NUM, ID, GR_NUM, COM_COMMENT)
+			VALUES (#{com_num}, #{id}, #{gr_num}, #{com_comment})
+		]]>
+	</insert>
+	
+	<!-- 레스토랑 댓글 수 증가 -->
+	<update id="restaurantCommentCountUp">
+		<![CDATA[
+			UPDATE GURI_RESTAURANT 
+			SET COMMENT_COUNTER = COMMENT_COUNTER + 1
+			WHERE GR_NUM = #{gr_num}
+		]]>
+	</update>
 </mapper>

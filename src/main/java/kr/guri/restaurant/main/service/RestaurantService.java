@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import kr.guri.restaurant.main.dao.RestaurantDAO;
+import kr.guri.restaurant.main.dto.CommentDTO;
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
 
@@ -69,5 +70,25 @@ public class RestaurantService {
 	
 	public List<RestaurantDTO> MySteamedRestaurant(String id) throws Exception {
 		return restaurantDAO.MySteamedRestaurant(id);
+	}
+	
+	// 레스토랑 댓글 총 갯수
+	public int restaurantCommentCount(CommentDTO commentDTO) throws Exception {
+		return restaurantDAO.restaurantCommentCount(commentDTO);
+	}
+	
+	// 레스토랑 댓글 조회
+	public List<CommentDTO> restaurantCommentSelect(CommentDTO commentDTO) throws Exception {
+		return restaurantDAO.restaurantCommentSelect(commentDTO);
+	}
+	
+	// 레스토랑 댓글 작성
+	public void restaurantCommentWrite(CommentDTO commentDTO) throws Exception {
+		restaurantDAO.restaurantCommentWrite(commentDTO);
+	}
+	
+	// 레스토랑 댓글 수 증가
+	public int restaurantCommentCountUp(RestaurantDTO restaurantDTO) throws Exception {
+		return restaurantDAO.restaurantCommentCountUp(restaurantDTO);
 	}
 }

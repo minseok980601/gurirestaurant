@@ -13,12 +13,13 @@ public class RestaurantDTO {
 	private String latitude;
 	private String longitude;
 	private int heart;
+	private int comment_counter;
 	
 	public RestaurantDTO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public RestaurantDTO(int gr_num, String business_name, String location, String location_tel, String gr_img, String latitude, String longitude, int heart) {
+	public RestaurantDTO(int gr_num, String business_name, String location, String location_tel, String gr_img, String latitude, String longitude, int heart, int comment_counter) {
 		this.gr_num = gr_num;
 		this.business_name = business_name;
 		this.location = location;
@@ -27,6 +28,7 @@ public class RestaurantDTO {
 		this.latitude= latitude;
 		this.longitude = longitude;
 		this.heart = heart;
+		this.comment_counter = comment_counter;
 	}
 	
 	public int getGr_num() {
@@ -82,6 +84,14 @@ public class RestaurantDTO {
 
 	public void setHeart(int heart) {
 		this.heart = heart;
+	}
+
+	public int getComment_counter() {
+		return comment_counter;
+	}
+
+	public void setComment_counter(int comment_counter) {
+		this.comment_counter = comment_counter;
 	}
 	
 }
