@@ -11286,3 +11286,30 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+  .comment_write_box {
+  	margin: 0px auto;
+  	display: flex;
+  	justify-content: center;
+  }
+  
+  #comment_input {
+  	width: 800px;
+  }
+
+  .comment_table {
+  	border-bottom: 1px black solid;
+  	width: 800px;
+	margin: 0px auto;
+  }
+  
+  #comment_id {
+  	width: 100px;
+  }
+  
+  #comment_comment {
+  	text-align: left;
+  }
+  
+  #comment_date {
+  	text-align: right;
+  }

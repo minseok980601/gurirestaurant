@@ -88,7 +88,7 @@
             </div>
         </section>
 	<div id="map" style="width:800px; height:300px;"></div>
-	<div>
+	<div class="comment_write_box">
 		<form action="${contextPath}/commentwrite" method="post">
 			<input type="hidden" name="gr_num" value="${showRt.gr_num}">
 			<input type="hidden" name="id" value="${loginMember.id}">
@@ -108,7 +108,19 @@
 	</div>
 	<div>
 		<c:forEach var="c_list" items="${commentList}">
-			<b>${c_list.com_comment }</b>
+			<table class="comment_table" >
+				<tr>
+					<td id="comment_id">
+						${c_list.id }
+					</td>
+					<td id="comment_comment">
+						${c_list.com_comment }
+					</td>
+					<td id="comment_date">
+						${c_list.com_date }
+					</td>
+				</tr>
+			</table>
 		</c:forEach>
 	</div>
         </section>
