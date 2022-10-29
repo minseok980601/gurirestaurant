@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.guri.restaurant.member.dto.MemberDTO;
@@ -24,5 +25,12 @@ public class MemberController {
 		session.setAttribute("loginMember", loginMember);
 		
 		return "redirect:/mainpage";
+	}
+	
+	@GetMapping(value = "logout")
+	public String logoutMember(HttpSession session) throws Exception {
+		session.invalidate();
+		
+		return "redirect:mainpage";
 	}
 }

@@ -6,14 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.guri.restaurant.main.dto.CommentDTO;
+import kr.guri.restaurant.main.dto.PageMaker;
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
+import kr.guri.restaurant.main.dto.SearchCriteria;
 import kr.guri.restaurant.main.service.RestaurantService;
 
 @Controller
@@ -112,5 +115,19 @@ public class MainController {
 		rttr.addAttribute("gr_num", commentDTO.getGr_num());
 		
 		return "redirect:showpage";
+	}
+	
+	@GetMapping(value = "/searchRestaurant")
+	public String searchPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+		List<RestaurantDTO> restaurant = restaurantService.searchPage(scri);
+		
+		model.addAttribute("rlist", restaurant);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.serCri(scri);
+		pageMaker.setTotalCount(restaurantService.countSearch(scri));
+		model.addAttribute("pageMaker", pageMaker);
+	
+		return 
 	}
 }

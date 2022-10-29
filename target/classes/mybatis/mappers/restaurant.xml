@@ -108,4 +108,27 @@
 			WHERE GR_NUM = #{gr_num}
 		]]>
 	</update>
+	
+	<!-- 검색어 입력 -->
+	<select id="restaurantSearch" resultType="restaurantDTO" parameterType="kr.guri.restaurant.main.dto.Criteria">
+		SELECT *
+		FROM (
+			SELECT gr.*, ROW_NUMBER() over(ORDER BY gr_num desc) AS rnum 
+			FROM GURI_RESTAURANT gr
+			<include refid="search"></include>
+			) mb
+		WHERE rnum BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="restaurantSearchCount" parameterType="kr.guri.restaurant.main.dto.Criteria" resultType="int">
+		SELECT COUNT(*) total
+		FROM GURI_RESTAURANT
+		<include refid="search"></include>
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			where place like '%' || #{keyword} || '%'
+		</if>
+	</sql>
 </mapper>

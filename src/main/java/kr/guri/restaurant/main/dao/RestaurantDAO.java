@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import kr.guri.restaurant.main.dto.CommentDTO;
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
+import kr.guri.restaurant.main.dto.SearchCriteria;
 
 @Repository("restaurantDAO")
 public class RestaurantDAO {
@@ -107,5 +108,13 @@ public class RestaurantDAO {
 	// 레스토랑 댓글 수 증가
 	public int restaurantCommentCountUp(RestaurantDTO restaurantDTO) throws Exception {
 		return sqlSession.update("mapper.restaurant.restaurantCommentCountUp", restaurantDTO);
+	}
+	
+	public List<RestaurantDTO> searchPage(SearchCriteria scri) throws Exception {
+		return sqlSession.selectList("mapper.restaurant.restaurantSearch", scri);
+	}
+	
+	public int countSearch(SearchCriteria scri) throws Exception {
+		return sqlSession.selectOne("mapper.restaurant.restaurantSearchCount", scri);
 	}
 }

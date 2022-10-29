@@ -51,6 +51,7 @@
                     		<c:otherwise>
                     			<p>${loginMember.nick_nm }님 반갑습니다.</p>
                     			<a href="${contextPath}/mypage?id=${loginMember.id}">마이페이지</a>
+                    			<a href="${contextPath}/logout">로그아웃</a>
                     		</c:otherwise>
                     	</c:choose>
                     </form>

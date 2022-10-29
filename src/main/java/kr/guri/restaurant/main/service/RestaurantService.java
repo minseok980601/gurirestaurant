@@ -10,6 +10,7 @@ import kr.guri.restaurant.main.dao.RestaurantDAO;
 import kr.guri.restaurant.main.dto.CommentDTO;
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
+import kr.guri.restaurant.main.dto.SearchCriteria;
 
 @Service("restaurantService")
 public class RestaurantService {
@@ -90,5 +91,13 @@ public class RestaurantService {
 	// 레스토랑 댓글 수 증가
 	public int restaurantCommentCountUp(RestaurantDTO restaurantDTO) throws Exception {
 		return restaurantDAO.restaurantCommentCountUp(restaurantDTO);
+	}
+	
+	public List<RestaurantDTO> searchPage(SearchCriteria scri) throws Exception {
+		return restaurantDAO.searchPage(scri);
+	}
+	
+	public int countSearch(SearchCriteria scri) throws Exception {
+		return restaurantDAO.countSearch(scri);
 	}
 }
