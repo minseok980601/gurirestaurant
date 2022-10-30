@@ -16,24 +16,6 @@
 	<link href="${contextPath}/resources/css/mainstyles.css" rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="${contextPath}/resources/css/mainstyles.css" rel="stylesheet" />
-    <script type="text/javascript">
-    	$(function() {
-        	$('#searchBtn').click(function() {
-            	var result = $('#selectBox option:selected').val();
-                	if($("#keywordInput").val() == "") {
-                 		alert("검색어를 입력해주세요");
-                 		return location.reload();
-                 	}
-                 	if(result == "t") {
-                 		location.hert = "${contextPath}/commentwrite" 
-                 					  + '${pageMaker.makeQuery(1)}'
-                 					  + '&searchType=t'
-                 					  + "&keyword="
-                 					  +encodeURIComponent($('#keywordInput').val());
-                 	}
-               });
-       });
-    </script>
 </head>
 <body>
        <!-- Navigation-->
@@ -82,16 +64,6 @@
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">구리 음식점</h1>
                     <p class="lead fw-normal text-white-50 mb-0">구리의 모든 음식점</p>
-                    <form method="get">
-	                    <div class="search">
-	                    	<select name="searchType" id="selectBox">
-	                    		<option value="t" <c:out value="${scri.searchType eq 't' ? 'selected' : ''}" />>제목</option>
-	                    	</select>
-	                    	<input type="text" name="keyword" id="keywordInput" value="${scri.keyword }"/>
-	                    	
-	                    	<button id="searchBtn" type="button">검색</button>
-	                    </div>
-                    </form>
                 </div>
             </div>
         </header>
@@ -165,22 +137,19 @@
                 </div>
             </div>
 	<div>
-		<c:if test="${paging.startPage != 1 }">
-			<a href="${contextPath}/mainpage?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-		</c:if>
-		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-			<c:choose>
-				<c:when test="${p == paging.nowPage }">
-					<b>${p }</b>
-				</c:when>
-				<c:when test="${p != paging.nowPage }">
-					<a href="${contextPath}/mainpage?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="${contextPath}/mainpage?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-		</c:if>
+		<ul>
+			<c:if test="${pageMaker.prev }">
+				<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+			</c:if>
+			
+			<c:forEach begin="${pageMaker.startPage }" end="{pageMaker.endPage}" var="idx">
+				<li><a href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+			</c:forEach>
+			
+			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+				<li><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1}">다음</a></li>
+			</c:if>
+		</ul>
 	</div>
         </section>
         <!-- Footer-->

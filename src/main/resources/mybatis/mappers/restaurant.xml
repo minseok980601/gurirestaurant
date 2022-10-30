@@ -128,7 +128,8 @@
 	
 	<sql id="search">
 		<if test="searchType != null">
-			where place like '%' || #{keyword} || '%'
+			<if test="searchType == 't'.toString()">WHERE BUSINESS_NAME LIKE '%' || #{keyword} || '%'</if>
+			
 		</if>
 	</sql>
 </mapper>

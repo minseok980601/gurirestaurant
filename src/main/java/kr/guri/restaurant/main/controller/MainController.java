@@ -119,15 +119,15 @@ public class MainController {
 	
 	@GetMapping(value = "/searchRestaurant")
 	public String searchPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
-		List<RestaurantDTO> restaurant = restaurantService.searchPage(scri);
+		List<RestaurantDTO> restaurantList = restaurantService.searchPage(scri);
 		
-		model.addAttribute("rlist", restaurant);
+		model.addAttribute("showRt", restaurantList);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.serCri(scri);
 		pageMaker.setTotalCount(restaurantService.countSearch(scri));
 		model.addAttribute("pageMaker", pageMaker);
 	
-		return 
+		return "mainpage/searchmainpage";
 	}
 }

@@ -5,7 +5,6 @@ public class SearchCriteria extends Criteria {
 	private String searchType = "";
 	private String keyword = "";
 	
-	private String id = "";
 	private String restaurant_name;
 	
 	public String getSearchType() {
@@ -20,12 +19,7 @@ public class SearchCriteria extends Criteria {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 	public String getRestaurant_name() {
 		return restaurant_name;
 	}
