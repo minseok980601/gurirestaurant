@@ -117,19 +117,20 @@
 			FROM GURI_RESTAURANT gr
 			<include refid="search"></include>
 			) mb
-		WHERE rnum BETWEEN #{start} AND #{end}
+		WHERE rnum BETWEEN #{rowStart} AND #{rowEnd}
 	</select>
 	
+	<!-- 검색어 총 개수 -->
 	<select id="restaurantSearchCount" parameterType="kr.guri.restaurant.main.dto.Criteria" resultType="int">
 		SELECT COUNT(*) total
 		FROM GURI_RESTAURANT
 		<include refid="search"></include>
 	</select>
 	
+	<!-- 검색어 목록 -->
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">WHERE BUSINESS_NAME LIKE '%' || #{keyword} || '%'</if>
-			
 		</if>
 	</sql>
 </mapper>

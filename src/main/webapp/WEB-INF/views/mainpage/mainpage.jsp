@@ -17,22 +17,15 @@
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="${contextPath}/resources/css/mainstyles.css" rel="stylesheet" />
     <script type="text/javascript">
-    	$(function() {
-        	$('#searchBtn').click(function() {
-            	var result = $('#selectBox option:selected').val();
-                	if($("#keywordInput").val() == "") {
-                 		alert("검색어를 입력해주세요");
-                 		return location.reload();
-                 	}
-                 	if(result == "t") {
-                 		location.hert = "${contextPath}/commentwrite" 
-                 					  + '${pageMaker.makeQuery(1)}'
-                 					  + '&searchType=t'
-                 					  + "&keyword="
-                 					  +encodeURIComponent($('#keywordInput').val());
-                 	}
-               });
-       });
+	$(function () {
+		$('searchBtn').click(
+			function () {
+				self.location = "${contextPath}/searchRestaurant"
+							  + '${pageMaker.makeQuery(1)}' + "&searchType="
+							  + $("select option:selected").val() + "&keyword="
+							  + encodeURIComponent($('#keywordInput').val());
+			});
+	});
     </script>
 </head>
 <body>
@@ -82,14 +75,14 @@
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">구리 음식점</h1>
                     <p class="lead fw-normal text-white-50 mb-0">구리의 모든 음식점</p>
-                    <form method="get">
+                    <form action="${contextPath}/searchRestaurant" method="get">
 	                    <div class="search">
 	                    	<select name="searchType" id="selectBox">
 	                    		<option value="t" <c:out value="${scri.searchType eq 't' ? 'selected' : ''}" />>제목</option>
 	                    	</select>
 	                    	<input type="text" name="keyword" id="keywordInput" value="${scri.keyword }"/>
 	                    	
-	                    	<button id="searchBtn" type="button">검색</button>
+	                    	<button id="searchBtn" type="submit">검색</button>
 	                    </div>
                     </form>
                 </div>

@@ -71,6 +71,18 @@ public class PageMaker extends Criteria{
 		return displayPageNum;
 	}
 	
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+	
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
 	public Criteria getCri() {
 		return cri;
 	}

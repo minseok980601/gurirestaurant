@@ -94,7 +94,8 @@ public class RestaurantService {
 	}
 	
 	public List<RestaurantDTO> searchPage(SearchCriteria scri) throws Exception {
-		return restaurantDAO.searchPage(scri);
+		List<RestaurantDTO> restaurantList = restaurantDAO.searchPage(scri);
+		return restaurantList;
 	}
 	
 	public int countSearch(SearchCriteria scri) throws Exception {

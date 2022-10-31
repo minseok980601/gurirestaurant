@@ -115,6 +115,6 @@ public class RestaurantDAO {
 	}
 	
 	public int countSearch(SearchCriteria scri) throws Exception {
-		return sqlSession.selectOne("mapper.restaurant.restaurantSearchCount", scri);
+		return sqlSession.selectOne("mapper.restaurant.restaurantSearchCount");
 	}
 }
