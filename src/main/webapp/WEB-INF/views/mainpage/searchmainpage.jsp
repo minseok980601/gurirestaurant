@@ -64,6 +64,16 @@
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">구리 음식점</h1>
                     <p class="lead fw-normal text-white-50 mb-0">구리의 모든 음식점</p>
+                    <form action="${contextPath}/searchRestaurant" method="get">
+	                    <div class="search">
+	                    	<select name="searchType" id="selectBox">
+	                    		<option value="t" <c:out value="${scri.searchType eq 't' ? 'selected' : ''}" />>제목</option>
+	                    	</select>
+	                    	<input type="text" name="keyword" id="keywordInput" value="${scri.keyword }"/>
+	                    	
+	                    	<button id="searchBtn" type="submit">검색</button>
+	                    </div>
+                    </form>
                 </div>
             </div>
         </header>
@@ -137,17 +147,17 @@
                 </div>
             </div>
 	<div>
-		<ul>
+		<ul class="ul-paging">
 			<c:if test="${pageMaker.prev }">
-				<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+				<li class="li-paging"><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
 			</c:if>
 			
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage}" var="idx">
-				<li><a href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+				<li class="li-paging"><a href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
 			</c:forEach>
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-				<li><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+				<li class="li-paging"><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 			</c:if>
 		</ul>
 	</div>

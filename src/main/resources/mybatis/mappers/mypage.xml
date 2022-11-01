@@ -39,4 +39,28 @@
 			WHERE A.ID = #{id}
 		]]>
 	</select>
+	
+	<select id="getTotalSteamedCount" parameterType="restaurantDTO" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM GURI_RESTAURANT gr 
+			INNER JOIN GR_HEART gh 
+			ON gr.GR_NUM = gh.GR_NUM 
+			WHERE ID = #{id}		
+		]]>
+	</select>
+	
+	<select id="mySteamedRestaurant" parameterType="kr.guri.restaurant.main.dto.PagingDTO" resultType="restaurantDTO">
+		SELECT *
+		FROM (
+				SELECT ROWNUM RN, gr.*
+				FROM GURI_RESTAURANT gr
+				INNER JOIN GR_HEART gh
+				ON gr.GR_NUM = gh.GR_NUM
+				WHERE gh.ID = #{id}
+				AND gh.STEAMCHECK = 1
+				ORDER BY gr.GR_NUM ASC  
+			) A
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
 </mapper>

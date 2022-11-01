@@ -157,17 +157,17 @@
                 </c:forEach>
                 </div>
             </div>
-	<div>
+	<div class="pagingbox">
 		<c:if test="${paging.startPage != 1 }">
 			<a href="${contextPath}/mainpage?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 		</c:if>
 		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
 			<c:choose>
 				<c:when test="${p == paging.nowPage }">
-					<b>${p }</b>
+					<b class="b-page">${p }</b>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-					<a href="${contextPath}/mainpage?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					<a class="a-page" href="${contextPath}/mainpage?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
