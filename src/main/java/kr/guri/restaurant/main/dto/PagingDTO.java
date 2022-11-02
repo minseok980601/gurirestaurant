@@ -14,7 +14,16 @@ public class PagingDTO {
 	private int start;			// SQL 쿼리에 쓸 start, end
 	private int end;
 	private int cntPage = 8;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public PagingDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -23,6 +32,16 @@ public class PagingDTO {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
 		setTotal(total);
+		calcLastPage(getTotal(), getCntPerPage());
+		calcStartEndPage(getNowPage(), cntPage);
+		calcStartEnd(getNowPage(), getCntPerPage());
+	}
+	
+	public PagingDTO(int total, int nowPage, int cntPerPage, String id) {
+		setNowPage(nowPage);
+		setCntPerPage(cntPerPage);
+		setTotal(total);
+		setId(id);
 		calcLastPage(getTotal(), getCntPerPage());
 		calcStartEndPage(getNowPage(), cntPage);
 		calcStartEnd(getNowPage(), getCntPerPage());

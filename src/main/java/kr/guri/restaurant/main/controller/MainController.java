@@ -99,15 +99,15 @@ public class MainController {
 		return steamedCheck;
 	}
 	
-	@GetMapping(value = "/mypage")
-	public String showMyPage(String id, Model model) throws Exception {
-		
-		List<RestaurantDTO> steamList = restaurantService.MySteamedRestaurant(id);
-		
-		model.addAttribute("steamList", steamList);
-		
-		return "mypage/mypage";
-	}
+//	@GetMapping(value = "/mypage")
+//	public String showMyPage(String id, Model model) throws Exception {
+//		
+//		List<RestaurantDTO> steamList = restaurantService.MySteamedRestaurant(id);
+//		
+//		model.addAttribute("steamList", steamList);
+//		
+//		return "mypage/mypage";
+//	}
 	
 	@PostMapping(value ="/commentwrite")
 	public String restaurantCommentWrite(CommentDTO commentDTO, RestaurantDTO restaurantDTO, RedirectAttributes rttr) throws Exception {

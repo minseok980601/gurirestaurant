@@ -40,13 +40,13 @@
 		]]>
 	</select>
 	
-	<select id="getTotalSteamedCount" parameterType="restaurantDTO" resultType="int">
+	<select id="getTotalSteamedCount" parameterType="kr.guri.restaurant.main.dto.PagingDTO" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*)
 			FROM GURI_RESTAURANT gr 
 			INNER JOIN GR_HEART gh 
 			ON gr.GR_NUM = gh.GR_NUM 
-			WHERE ID = #{id}		
+			WHERE ID = #{id, jdbcType=VARCHAR}		
 		]]>
 	</select>
 	
