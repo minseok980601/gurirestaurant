@@ -19,11 +19,12 @@ public class MyPageService {
 	@Autowired
 	private MyPageDAO mypageDAO;
 	
+	// 내가 찜한 개수
 	public int getTotalSteamedCount(PagingDTO pagingDTO) throws Exception {
-		
 		return mypageDAO.getTotalSteamedCount(pagingDTO); 
 	}
 	
+	// 내가 찜한 리스트
 	public List<RestaurantDTO> mySteamedRestaurant(PagingDTO pagingDTO) throws Exception {
 		return mypageDAO.mySteamedRestaurant(pagingDTO);
 	}

@@ -93,11 +93,13 @@ public class RestaurantService {
 		return restaurantDAO.restaurantCommentCountUp(restaurantDTO);
 	}
 	
+	// 검색어 입력
 	public List<RestaurantDTO> searchPage(SearchCriteria scri) throws Exception {
 		List<RestaurantDTO> restaurantList = restaurantDAO.searchPage(scri);
 		return restaurantList;
 	}
 	
+	// 검색어 총 개수
 	public int countSearch(SearchCriteria scri) throws Exception {
 		return restaurantDAO.countSearch(scri);
 	}

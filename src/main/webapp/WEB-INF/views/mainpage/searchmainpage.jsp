@@ -16,6 +16,17 @@
 	<link href="${contextPath}/resources/css/mainstyles.css" rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="${contextPath}/resources/css/mainstyles.css" rel="stylesheet" />
+    <script type="text/javascript">
+		$(function () {
+			$('searchBtn').click(
+				function () {
+					self.location = "${contextPath}/searchRestaurant"
+								  + '${pageMaker.makeQuery(1)}' + "&searchType="
+								  + $("select option:selected").val() + "&keyword="
+								  + encodeURIComponent($('#keywordInput').val());
+				});
+		});
+    </script>
 </head>
 <body>
        <!-- Navigation-->

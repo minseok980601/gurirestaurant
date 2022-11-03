@@ -75,7 +75,6 @@
                                     <!-- Product name-->
                                     <a class="fw-bolder" href="${contextPath }/showpage?gr_num=${list.gr_num}">${list.business_name }</a>
                                     <!-- Product price-->
-                                    
                                 </div>
                             </div>
                             <!-- Product actions-->
