@@ -18,6 +18,11 @@
         <link href="${contextPath}/resources/css/mypagestyles.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${contextPath}/resources/css/mypagestyles.css" rel="stylesheet" />
+        <script type="text/javascript">
+        	function change_pwd() {
+				location.href="${contextPath}/changepwd";
+			}
+        </script>
 </head>
 <body>
      <!-- Navigation-->
@@ -52,11 +57,13 @@
      <!-- Header-->
      <header class="bg-dark py-5">
          <div class="container px-4 px-lg-5 my-5">
-         	<ul>
+         	<ul class="loginMember_ul">
          		<li>${loginMember.id }</li>
          		<li>${loginMember.name }</li>
          		<li>${loginMember.nick_nm }</li>
          		<li>${loginMember.email }</li>
+         		<li><a href="${contextPath}/changepwd">비밀번호 변경<a>&nbsp;<a>닉네임 변경</a></li>
+         		<li><button type="button" class="change_pwd" onclick="change_pwd">비밀번호 변경</button></li>
          	</ul>
          </div>
      </header>

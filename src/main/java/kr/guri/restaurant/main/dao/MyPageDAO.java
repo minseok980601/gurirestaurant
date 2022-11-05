@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
+import kr.guri.restaurant.member.dto.MemberDTO;
 
 @Repository("mypageDAO")
 public class MyPageDAO {
@@ -23,5 +24,9 @@ public class MyPageDAO {
 	// 내가 찜한 리스트
 	public List<RestaurantDTO> mySteamedRestaurant(PagingDTO pagingDTO) throws Exception {
 		return sqlSession.selectList("mapper.mypage.mySteamedRestaurant", pagingDTO);
+	}
+	
+	public void changfePwd(MemberDTO memberDTO) throws Exception {
+		sqlSession.update("mapper.mypage.changfePwd", memberDTO);
 	}
 }

@@ -9,6 +9,7 @@ import kr.guri.restaurant.main.dao.MyPageDAO;
 import kr.guri.restaurant.main.dao.RestaurantDAO;
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
+import kr.guri.restaurant.member.dto.MemberDTO;
 
 @Service("mypageService")
 public class MyPageService {
@@ -27,5 +28,9 @@ public class MyPageService {
 	// 내가 찜한 리스트
 	public List<RestaurantDTO> mySteamedRestaurant(PagingDTO pagingDTO) throws Exception {
 		return mypageDAO.mySteamedRestaurant(pagingDTO);
+	}
+	
+	public void changfePwd(MemberDTO memberDTO) throws Exception {
+		mypageDAO.changfePwd(memberDTO);
 	}
 }

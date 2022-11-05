@@ -7324,7 +7324,8 @@ textarea.form-control-lg {
 }
 
 .mt-auto {
-  margin-top: auto !important;
+  /* margin-top: auto !important; */
+  margin-top: 207px;
 }
 
 .me-0 {
@@ -7491,8 +7492,10 @@ textarea.form-control-lg {
 }
 
 .py-5 {
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
+/*   padding-top: 3rem !important;
+  padding-bottom: 3rem !important; */
+  height: 500px;
+  margin-top: 150px;
 }
 
 .pt-0 {
@@ -7672,7 +7675,8 @@ textarea.form-control-lg {
 }
 
 .text-center {
-  text-align: center !important;
+	padding: 50px;
+  	text-align: center !important;
 }
 
 .text-decoration-none {
@@ -11307,4 +11311,13 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 15rem;
+}
+
+.pwd_button {
+	color: #fff;
+	background-color: #0d6efd;
+	border-color: #0d6efd;
+	padding: 0.5rem 1rem;
+	font-size: 1.25rem;
+	border-radius: 0.3rem;
 }

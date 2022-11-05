@@ -65,4 +65,12 @@
 			) A
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
+	
+	<update id="changfePwd">
+		<![CDATA[
+			UPDATE GR_MEMBER
+			SET PWD = #{pwd}
+			WHERE ID = #{id}
+		]]>
+	</update>
 </mapper>
