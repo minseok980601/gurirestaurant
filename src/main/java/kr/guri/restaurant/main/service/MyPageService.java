@@ -30,7 +30,19 @@ public class MyPageService {
 		return mypageDAO.mySteamedRestaurant(pagingDTO);
 	}
 	
+	// 비밀번호 변경
 	public void changfePwd(MemberDTO memberDTO) throws Exception {
 		mypageDAO.changfePwd(memberDTO);
+	}
+	
+	// 닉네임 검사
+	public int checkNickname(MemberDTO memberDTO) throws Exception {
+		int result = mypageDAO.checkNickname(memberDTO);
+		return result;
+	}
+	
+	// 닉네임 변경
+	public void changeNickname(MemberDTO memberDTO) throws Exception {
+		mypageDAO.changeNickname(memberDTO);
 	}
 }

@@ -66,11 +66,29 @@
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
+	<!-- 비밀번호 변경 -->
 	<update id="changfePwd">
 		<![CDATA[
 			UPDATE GR_MEMBER
 			SET PWD = #{pwd}
 			WHERE ID = #{id}
+		]]>
+	</update>
+	
+	<!-- 닉네임 체크 -->
+	<select id="checkNickname" resultType="int">
+		<![CDATA[
+		SELECT count(*)
+		FROM GR_MEMBER
+		WHERE NICK_NM = #{nick_nm}
+		]]>
+	</select>
+	
+	<update id="changeNickname">
+		<![CDATA[
+		UPDATE GR_MEMBER
+		SET NICK_NM = #{nick_nm}
+		WHERE ID = #{id}
 		]]>
 	</update>
 </mapper>

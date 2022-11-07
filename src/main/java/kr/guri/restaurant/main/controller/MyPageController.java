@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.guri.restaurant.main.dto.PagingDTO;
 import kr.guri.restaurant.main.dto.RestaurantDTO;
@@ -27,6 +29,7 @@ public class MyPageController {
 	
 	@Autowired
 	private MemberDTO memberDTO;
+	
 	
 	@GetMapping(value = "/mypage")
 	public String showMyPage(String id, Model model, PagingDTO pagingDTO, RestaurantDTO restaurantDTO,
@@ -69,6 +72,29 @@ public class MyPageController {
 		memberDTO.setId(id);
 		memberDTO.setPwd(pwd);
 		mypageService.changfePwd(memberDTO);
+		
+		return "redirect:mainpage";
+	}
+	
+	@GetMapping(value = "/changenickname")
+	public String changenickname() {
+		return "mypage/changenickname";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "")
+	
+	// 닉네임 변경
+	@PostMapping(value = "/updatenickname")
+	public String updateNickname(@RequestParam(value = "id", defaultValue = "", required = false) String id,
+									String nick_nm) throws Exception {
+		memberDTO.setId(id);
+		memberDTO.setNick_nm(nick_nm);
+		
+		System.out.println("ID : " + id);
+		System.out.println("nick_nm : " + nick_nm);
+		
+		mypageService.changeNickname(memberDTO);
 		
 		return "redirect:mainpage";
 	}
