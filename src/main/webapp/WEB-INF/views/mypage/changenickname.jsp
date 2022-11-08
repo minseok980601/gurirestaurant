@@ -18,22 +18,22 @@
         <link href="${contextPath}/resources/css/changestyles.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${contextPath}/resources/css/changestyles.css" rel="stylesheet" />
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript">
-        	function check_nick_nm()() {
+        	function check_nick_nm() {
 				
-        		let specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+         		let specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
         		
         		// 닉네임 입력값을 가져온다
-        		let nick_nm = document.getElementById('input_nick_nm').value;
+        		let nick_nm = document.getElementById('input_nick').value;
         		nick_nm = nick_nm.toUpperCase();
-        		let nickLentgh = 0;
+        		let nickLength = 0;
         		
         		// 한글, 영문 길이 2,1로 바꾸기
-        		// 한글은 2, 영문은 1로 치환한다.
-        		for(var i = 0; i < nick_nm.length; i++) {
-        			// charAt은 String 타입 객체를 char 타입으로 변환.
-        			nick = nick_nm.chartAt(i);
+        		// 한글은 2, 영문은 1로 치환한다
+        		for (var i = 0; i < nick_nm.length; i++) {
+        			// chartAt은 String 타입 객체를 char타입으로 변환한다. 
+        			nick = nick_nm.charAt(i);
         			
         			// escape() 함수는 charAt을 통해 받아온 char을 16진수로 바꿔주며 쿠키충돌을 피한다. 한글은 이 길이가 4 넘는다.
         			if(escape(nick).length > 4) {
@@ -44,31 +44,45 @@
         		}
         		
         		// 닉네임 필수 입력
-        		if(nick_nm == null || nick_nm == "") {
+        		if (nick_nm == null || nick_nm == "") {
         			alert("닉네임을 입력해 주세요.");
-        			document.nick_box.focus();
+        			document.modify_info.focus();
         			return false;
-        		}
+        		} 
         		// 닉네임 빈칸 포함 안됨
-        		else if(nick_nm.search(/\s/) != -1) {
+        		else if (nick_nm.search(/\s/) != -1) {
         			alert("닉네임은 빈 칸을 포함 할 수 없습니다.");
         			return false;
         		}
-        		// 닉네임 한글 3 ~ 10자, 영문 및 숫자 6 ~ 20자
-        		else if(nickLength < 6 || nickLength > 20) {
-        			alert("닉네임은 한글 3~10자, 영문 및 숫자 6~10자 까지 가능합니다.");
+        		// 닉네임 한글 3~10자, 영문 및 숫자 6 ~ 20자
+        		else if (nickLength < 6 || nickLength > 20) {
+        			alert("닉네임은 한글 3~10자, 영문 및 숫자 6~20자 까지 가능합니다.");
         			return false;
         		}
         		// 닉네임 특수문자 포함 안됨 test()는 정규식과 특정 문자열 사이의 일치에 대한 검색을 수행, 일치 true, 불일치 false 반환
-        		else if(specialCheck.test(nick_nm)) {
+        		else if (specialCheck.test(nick_nm)) {
         			alert("닉네임은 특수문자를 포함 할 수 없습니다.");
         			return false;
         		} else {
         			$.ajax({
-        				url : "${contextPath}/"
-        			})
+        				url : "${contextPath}/checknickname" ,
+        				type : "post" ,
+        				dataType: "JSON" ,
+        				data : {"nick_nm" : nick_nm} ,
+        				success : function(result) {
+        					if(result != 1) {
+        						alert("사용 가능한 닉네임 입니다.");
+        					} 
+        					else if(result == 1) {
+        						alert("중복된 닉네임입니다.");
+        					}
+        				} ,
+        				error : function(err) {
+        					alert("닉네임 변경 오류");
+        				}
+        			});
         		}
-			}
+        	}
         </script>
 
 </head>
@@ -126,13 +140,14 @@
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
                                     	<input type="hidden" value="${loginMember.id }">
-                                        <input class="form-control" id="input_nick_nm" name="nick_nm" type="password" />
+                                    	<input type="hidden" value="${loginMember.nick_nm }">
+                                        <input class="form-control" id="input_nick" name="nick_nm" type="text" />
                                         <label for="name" >변경할 닉네임</label>
                                     </div>
                                     <!-- Submit Button-->
                                     <div class="d-grid">
-                                    	<button class="pwd_button" type="button" onclick="check_nick_nm()">닉네임 검사</button>
-                                    	<button class="pwd_button" type="button" onclick="change_nick_nm()">닉네임 변경</button>
+                                    	<button class="pwd_button" type="button" id="chk_Nick" onclick="check_nick_nm()">닉네임 검사</button>
+                                    	<button class="pwd_button" type="button" id="change_Nick" onclick="change_nick_nm()">닉네임 변경</button>
                                     </div>
                                 </form>
                             </div>

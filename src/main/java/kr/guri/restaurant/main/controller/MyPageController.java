@@ -1,6 +1,7 @@
 package kr.guri.restaurant.main.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,7 +83,16 @@ public class MyPageController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "")
+	@PostMapping(value = "/checknickname")
+	public int checkNickName(@RequestParam Map<String, Object> nick_nm) throws Exception {
+		
+		String nick = (String) nick_nm.get("nick_nm");
+		memberDTO.setNick_nm(nick);
+		System.out.println("전달받은 nick : " + nick);
+		int result = mypageService.checkNickname(memberDTO);
+		System.out.println("확인 결과 : " + result);
+		return result;
+	}
 	
 	// 닉네임 변경
 	@PostMapping(value = "/updatenickname")

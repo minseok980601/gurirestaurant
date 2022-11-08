@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import kr.guri.restaurant.main.dto.PagingDTO;
@@ -32,7 +33,7 @@ public class MyPageDAO {
 	}
 	
 	// 닉네임 체크
-	public int checkNickname(MemberDTO memberDTO) throws Exception {
+	public int checkNickname(MemberDTO memberDTO) throws DataAccessException {
 		int result = sqlSession.selectOne("mapper.mypage.checkNickname", memberDTO);
 		return result;
 	}
