@@ -15,9 +15,9 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="${contextPath}/resources/css/changestyles.css" rel="stylesheet" />
+        <link href="${contextPath}/resources/css/change_nick_styles.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="${contextPath}/resources/css/changestyles.css" rel="stylesheet" />
+        <link href="${contextPath}/resources/css/change_nick_styles.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript">
         	function check_nick_nm() {
@@ -72,6 +72,8 @@
         				success : function(result) {
         					if(result != 1) {
         						alert("사용 가능한 닉네임 입니다.");
+        						chk_Nick.style.display = 'none';
+        						change_Nick.style.display = 'block';
         					} 
         					else if(result == 1) {
         						alert("중복된 닉네임입니다.");
@@ -91,7 +93,7 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                    <a class="navbar-brand" href="${contextPath}/mainpage">구리 음식점</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -146,8 +148,8 @@
                                     </div>
                                     <!-- Submit Button-->
                                     <div class="d-grid">
-                                    	<button class="pwd_button" type="button" id="chk_Nick" onclick="check_nick_nm()">닉네임 검사</button>
-                                    	<button class="pwd_button" type="button" id="change_Nick" onclick="change_nick_nm()">닉네임 변경</button>
+                                    	<button class="nick__chk_button" type="button" id="chk_Nick" onclick="check_nick_nm()">닉네임 검사</button>
+                                    	<button class="nick_button" type="button" id="change_Nick" onclick="change_nick_nm()">닉네임 변경</button>
                                     </div>
                                 </form>
                             </div>

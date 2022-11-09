@@ -15,37 +15,12 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="${contextPath}/resources/css/changestyles.css" rel="stylesheet" />
+        <link href="${contextPath}/resources/css/change_nick_styles.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="${contextPath}/resources/css/changestyles.css" rel="stylesheet" />
-
+        <link href="${contextPath}/resources/css/change_nick_styles.css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript">
-        	function change_pwd() {
-				let pass = document.getElementById('input_pass').value;
-				let pass2 = document.getElementById('input_pass2').value;
-				if(document.pwd_box._pwd.value == "") {
-					alert("비밀번호를 입력해주세요");
-					document.pwd_box._pwd.focus();
-					return false;
-				}
-				
-				if(pass.length < 8 || pass.length > 16) {
-					alert('비밀번호는 8글자 이상, 16글자 이하만 사용 가능합니다.');
-					document.pwd_box._pwd.focus();
-					return false;
-				}
-				
-				if(document.pwd_box._pwd.value != document.pwd_box.pwd.value) {
-					alert("비밀번호를 다시 확인해주세요");
-					document.pwd_box.pwd.focus();
-					return false;
-				} else {
-					alert("비밀번호 변경 완료!");
-					document.pwd_box.action="${contextPath}/updatepwd?id=${loginMember.id}";
-					document.pwd_box.method="post";
-					document.pwd_box.submit();
-				}
-			}
+
         </script>
 
 </head>
@@ -87,7 +62,7 @@
                     <!-- Contact form-->
                     <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                         <div class="text-center mb-5">
-                            <h1 class="fw-bolder">비밀번호 변경</h1>
+                            <h1 class="fw-bolder">닉네임 변경</h1>
                             <p class="lead fw-normal text-muted mb-0">안전한 비밀번호를 사용합시다</p>
                         </div>
                         <div class="row gx-5 justify-content-center">
@@ -99,21 +74,18 @@
                                 <!-- To make this form functional, sign up at-->
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
-                                <form id="contactForm" method="post" name="pwd_box" >
+                                <form id="contactForm" method="post" name="nick_box" >
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
                                     	<input type="hidden" value="${loginMember.id }">
-                                        <input class="form-control" id="input_pass" name="_pwd" type="password" />
-                                        <label for="name" >비밀번호 변경</label>
-                                    </div>
-                                    <!-- Email address input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="input_pass2" name="pwd" type="password" />
-                                        <label for="email">비밀번호 확인</label>
+                                    	<input type="hidden" value="${loginMember.nick_nm }">
+                                        <input class="form-control" id="input_nick" name="nick_nm" type="text" />
+                                        <label for="name" >변경할 닉네임</label>
                                     </div>
                                     <!-- Submit Button-->
                                     <div class="d-grid">
-                                    	<button class="pwd_button" type="button" onclick="change_pwd()">Submit</button>
+                                    	<button class="nick__chk_button" type="button" id="chk_Nick" onclick="check_nick_nm()">닉네임 검사</button>
+                                    	<button class="nick_button" type="button" id="change_Nick" onclick="change_nick_nm()">닉네임 변경</button>
                                     </div>
                                 </form>
                             </div>

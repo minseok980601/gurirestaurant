@@ -28,7 +28,7 @@
      <!-- Navigation-->
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
          <div class="container px-4 px-lg-5">
-             <a class="navbar-brand" href="#!">Start Bootstrap</a>
+             <a class="navbar-brand" href="${contextPath}/mainpage">구리 음식점</a>
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                  <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -58,13 +58,14 @@
      <header class="bg-dark py-5">
          <div class="container px-4 px-lg-5 my-5">
          	<ul class="loginMember_ul">
-         		<li>${loginMember.id }</li>
-         		<li>${loginMember.name }</li>
-         		<li>${loginMember.nick_nm }</li>
-         		<li>${loginMember.email }</li>
-         		<li><a href="${contextPath}/changepwd">비밀번호 변경<a>&nbsp;
-         			<a href="${contextPath}/changenickname">닉네임 변경</a></li>
-         		<li><button type="button" class="change_pwd" onclick="change_pwd">비밀번호 변경</button></li>
+         		<li>아이디 : ${loginMember.id }</li>
+         		<li>이름 : ${loginMember.name }</li>
+         		<li>닉네임 : ${loginMember.nick_nm }</li>
+         		<li>이메일 : ${loginMember.email }</li>
+         		<li>
+         			<button type="button" class="change_pwd" onclick="location.href='${contextPath}/changepwd'">비밀번호 변경</button>
+         			<button type="button" class="change_nick" onclick="location.href='${contextPath}/changenickname'">닉네임 변경</button>
+         		</li>
          	</ul>
          </div>
      </header>

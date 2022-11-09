@@ -33,4 +33,9 @@ public class MemberController {
 		
 		return "redirect:mainpage";
 	}
+	
+	@GetMapping(value = "/join")
+	public String joinPage() throws Exception {
+		return "joinpage/joinmember";
+	}
 }

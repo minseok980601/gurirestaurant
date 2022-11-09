@@ -36,12 +36,14 @@
 <body>
 	<div>
 		<table id="information_box">
-			<td>
-				<b>${loginMember.id }</b>
-				<b>${loginMember.name }</b>
-				<b>${loginMember.nick_nm }</b>
-				<b>${loginMember.email }</b>
-			</td>
+			<tr>
+				<td>
+					<b>${loginMember.id }</b>
+					<b>${loginMember.name }</b>
+					<b>${loginMember.nick_nm }</b>
+					<b>${loginMember.email }</b>
+				</td>
+			</tr>
 		</table>
 	</div>
 	<table id="itembox_1">	

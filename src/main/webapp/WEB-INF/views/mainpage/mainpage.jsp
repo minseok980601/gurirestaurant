@@ -32,7 +32,7 @@
        <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <a class="navbar-brand" href="${contextPath}/mainpage">구리 음식점</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -61,8 +61,12 @@
                     		</c:when>
                     		<c:otherwise>
                     			<p>${loginMember.nick_nm }님 반갑습니다.</p>
-                    			<a href="${contextPath}/mypage?id=${loginMember.id}">마이페이지</a>
-                    			<a href="${contextPath}/logout">로그아웃</a>
+                    			<button type="button" onclick="location.href='${contextPath}/mypage?id=${loginMember.id}'">
+                    				마이페이지
+                    			</button>
+                    			<button type="button" onclick="location.href='${contextPath}/logout'">
+                    				로그아웃
+                    			</button>
                     		</c:otherwise>
                     	</c:choose>
                     </form>
