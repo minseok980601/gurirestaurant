@@ -18,4 +18,9 @@ public class MemberDAO {
 	public MemberDTO selectID(MemberDTO memberDTO, HttpSession session) throws DataAccessException {
 		return sqlSession.selectOne("mapper.member.selectID", memberDTO);
 	}
+	
+	public int checkID(MemberDTO memberDTO) throws DataAccessException {
+		int result = sqlSession.selectOne("mapper.member.checkID", memberDTO);
+		return result;
+	}
 }

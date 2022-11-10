@@ -22,5 +22,11 @@ public class MemberService {
 		return memberDAO.selectID(memberDTO, session);
 	}
 	
+	// 닉네임 검사
+	public int checkID(MemberDTO memberDTO) throws Exception {
+		int result = memberDAO.checkID(memberDTO);
+		return result;
+	}
+	
 	
 }

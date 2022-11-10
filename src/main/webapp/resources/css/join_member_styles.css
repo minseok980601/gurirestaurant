@@ -9139,6 +9139,7 @@ textarea.form-control-lg {
   .px-md-5 {
     padding-right: 3rem !important;
     padding-left: 3rem !important;
+    height: 650px;
   }
 
   .py-md-0 {
@@ -11313,21 +11314,11 @@ html {
   min-height: 15rem;
 }
 
-.nick__chk_button {
+.pwd_button {
 	color: #fff;
 	background-color: #0d6efd;
 	border-color: #0d6efd;
 	padding: 0.5rem 1rem;
 	font-size: 1.25rem;
 	border-radius: 0.3rem;
-}
-
-.nick_button {
-	color: #fff;
-	background-color: #0d6efd;
-	border-color: #0d6efd;
-	padding: 0.5rem 1rem;
-	font-size: 1.25rem;
-	border-radius: 0.3rem;
-	display: none;
 }

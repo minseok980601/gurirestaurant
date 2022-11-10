@@ -58,6 +58,9 @@
                   			    <button class="btn btn-outline-dark" type="submit">
                            		 로그인
                         		</button>
+                        		<button type="button" onclick="location.href='${contextPath}/join'">
+                        			회원가입
+                        		</button>
                     		</c:when>
                     		<c:otherwise>
                     			<p>${loginMember.nick_nm }님 반갑습니다.</p>

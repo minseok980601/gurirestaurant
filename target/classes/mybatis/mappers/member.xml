@@ -19,4 +19,12 @@
 			WHERE ID = #{id} AND  PWD = #{pwd}
 		]]>
 	</select>
+	
+	<select id="checkID" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			FROM GR_MEMBER
+			WHERE ID = #{id}
+		]]>
+	</select>
 </mapper>
