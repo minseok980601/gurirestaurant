@@ -55,4 +55,11 @@ public class MemberController {
 		System.out.println("확인 결과 : " + result);
 		return result;
 	}
+	
+	@PostMapping(value = "/joinmember")
+	public String joinMember(MemberDTO memberDTO) throws Exception {
+		memberService.joinMember(memberDTO);
+		
+		return "mainpage/mainpage";
+	}
 }

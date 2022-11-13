@@ -28,5 +28,8 @@ public class MemberService {
 		return result;
 	}
 	
+	public void joinMember(MemberDTO memberDTO) throws Exception {
+		memberDAO.joinMember(memberDTO);
+	}
 	
 }

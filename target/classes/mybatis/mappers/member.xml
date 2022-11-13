@@ -27,4 +27,11 @@
 			WHERE ID = #{id}
 		]]>
 	</select>
+	
+	<select id="joinMember" parameterType="memberDTO">
+		<![CDATA[
+			INSERT INTO GR_MEMBER(ID, PWD, NAME, NICK_NM, EMAIL) 
+			VALUES (#{id}, #{pwd}, #{name}, #{nick_nm}, #{email})
+		]]>
+	</select>
 </mapper>

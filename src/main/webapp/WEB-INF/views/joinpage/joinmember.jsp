@@ -21,6 +21,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript">
         
+        let checkcode = 0;
+        
         let idDupcode = 0;
         let nickDupcode = 0;
         
@@ -76,10 +78,10 @@
     				success : function(result) {
     					if(result != 1) {
     						alert("사용 가능한 닉네임 입니다.");
+    						nickDupcode = 1;
     					} 
     					else if(result == 1) {
     						alert("중복된 닉네임입니다.");
-    						nickDupcode = 1;
     					}
     				} ,
     				error : function(err) {
@@ -132,10 +134,10 @@
     				success : function (result) {
 						if(result != 1) {
 							alert("사용 가능한 아이디 입니다.");
+							idDupcode = 1;
 						} 
 						else if(result == 1) {
 							alert("중복된 아이디 입니다.");
-    						idDupcode = 1;
 						}
 					} ,
 					error : function (err) {
@@ -151,9 +153,10 @@
     		// 1이면 성곡적으로 폼액션, 1이 아닌ㄹ경우 form action 불가
     		checkcode = 0;
     		
+    		if(checkcode == 1)
     		check_nick_nm();
     		if(checkcode == 1)
-   			check_id();
+    		check_id();
     		if(checkcode == 1)
     			
     		alert('체크코드 : ' + checkcode);
@@ -163,11 +166,17 @@
     			checkcode = -1;
     			return false;
     		}
-    		if(nickDupcode != -1) {
+    		if(nickDupcode != 1) {
     			alert("닉네임 중복확인 인증을 해주세요.");
     			checkcode = -1;
     			return false;
     		}
+    		if(checkcode == 1) {
+    			alert("회원가입 성공");
+    			document.getElementsByName("chk_Nick")[0].setAttribute("type", "submit"); 
+    		}
+    		else
+    			return false;
     		
 		}
         </script>
@@ -213,46 +222,48 @@
                             <h1 class="fw-bolder">회원 가입</h1>
                             <p class="lead fw-normal text-muted mb-0">구리 음식점을 가입해 주셔서 감사합니다.</p>
                         </div>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8 col-xl-6">
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- * * SB Forms Contact Form * *-->
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- This form is pre-integrated with SB Forms.-->
-                                <!-- To make this form functional, sign up at-->
-                                <!-- https://startbootstrap.com/solution/contact-forms-->
-                                <!-- to get an API token!-->
-                                    <!-- Name input-->
-                                    <form action="" id="Check_id_form">
-	                                    <div class="form-floating mb-3">
-	                                        <input class="form-control" id="input_id" name="id" type="text" />
-	                                        <button type="button" onclick="check_id()">아이디 중복 확인</button>
-	                                        <label for="id" >아이디</label>
-	                                    </div>
-                                    </form>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="input_pwd" name="pwd" type="password" />
-                                        <label for="pwd">비밀번호</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="input_name" name="name" type="text" />
-                                        <label for="name">이름</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="input_nick" name="nick_nm" type="text">
-                                        <button type="button" onclick="check_nick_nm()">닉네임 중복 확인</button>
-                                        <label for="nick_nm">닉네임</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="input_nick_nm" name="email" type="email">
-                                        <label for="email">이메일</label>
-									</div>	
-                                    <!-- Submit Button-->
-                                    <div class="d-grid">
-                                    	<button class="nick__chk_button" type="button" id="chk_Nick" onclick="Check()">회원가입</button>
-                                    </div>
-                            </div>
-                        </div>
+                        <form action="${contextPath}/joinmember" id="Check_id_form" method="post">
+	                        <div class="row gx-5 justify-content-center">
+	                            <div class="col-lg-8 col-xl-6">
+	                                <!-- * * * * * * * * * * * * * * *-->
+	                                <!-- * * SB Forms Contact Form * *-->
+	                                <!-- * * * * * * * * * * * * * * *-->
+	                                <!-- This form is pre-integrated with SB Forms.-->
+	                                <!-- To make this form functional, sign up at-->
+	                                <!-- https://startbootstrap.com/solution/contact-forms-->
+	                                <!-- to get an API token!-->
+	                                    <!-- Name input-->
+	                                    
+		                                    <div class="form-floating mb-3">
+		                                        <input class="form-control" id="input_id" name="id" type="text" />
+		                                        <button type="button" onclick="check_id()">아이디 중복 확인</button>
+		                                        <label for="id" >아이디</label>
+		                                    </div>
+	                                    
+		                                    <div class="form-floating mb-3">
+		                                        <input class="form-control" id="input_pwd" name="pwd" type="password" />
+		                                        <label for="pwd">비밀번호</label>
+		                                    </div>
+		                                    <div class="form-floating mb-3">
+		                                        <input class="form-control" id="input_name" name="name" type="text" />
+		                                        <label for="name">이름</label>
+		                                    </div>
+		                                    <div class="form-floating mb-3">
+		                                        <input class="form-control" id="input_nick" name="nick_nm" type="text">
+		                                        <button type="button" onclick="check_nick_nm()">닉네임 중복 확인</button>
+		                                        <label for="nick_nm">닉네임</label>
+		                                    </div>
+		                                    <div class="form-floating mb-3">
+		                                        <input class="form-control" id="input_nick_nm" name="email" type="email">
+		                                        <label for="email">이메일</label>
+											</div>	
+		                                    <!-- Submit Button-->
+		                                    <div class="d-grid">
+		                                    	<button class="nick__chk_button" type="button" id="chk_Nick" name="chk_Nick" onclick="Check()">회원가입</button>
+		                                    </div>
+	                            </div>
+	                        </div>
+                        </form>
                     </div>
                     <!-- Contact cards-->
                 </div>

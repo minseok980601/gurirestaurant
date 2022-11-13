@@ -23,4 +23,8 @@ public class MemberDAO {
 		int result = sqlSession.selectOne("mapper.member.checkID", memberDTO);
 		return result;
 	}
+	
+	public void joinMember(MemberDTO memberDTO) throws Exception {
+		sqlSession.insert("mapper.member.joinMember", memberDTO);
+	}
 }
