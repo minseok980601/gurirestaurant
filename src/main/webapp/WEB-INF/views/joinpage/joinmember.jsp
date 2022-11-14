@@ -53,16 +53,19 @@
     		if (nick_nm == null || nick_nm == "") {
     			alert("닉네임을 입력해 주세요.");
     			document.modify_info.focus();
+    			checkcode = -1;
     			return false;
     		} 
     		// 닉네임 빈칸 포함 안됨
     		else if (nick_nm.search(/\s/) != -1) {
     			alert("닉네임은 빈 칸을 포함 할 수 없습니다.");
+    			checkcode = -1;
     			return false;
     		}
     		// 닉네임 한글 3~10자, 영문 및 숫자 6 ~ 20자
     		else if (nickLength < 6 || nickLength > 20) {
     			alert("닉네임은 한글 3~10자, 영문 및 숫자 6~20자 까지 가능합니다.");
+    			checkcode = -1;
     			return false;
     		}
     		// 닉네임 특수문자 포함 안됨 test()는 정규식과 특정 문자열 사이의 일치에 대한 검색을 수행, 일치 true, 불일치 false 반환
@@ -79,9 +82,11 @@
     					if(result != 1) {
     						alert("사용 가능한 닉네임 입니다.");
     						nickDupcode = 1;
+    						checkcode = 1;
     					} 
     					else if(result == 1) {
     						alert("중복된 닉네임입니다.");
+    						checkcode = -1;
     					}
     				} ,
     				error : function(err) {
@@ -112,18 +117,22 @@
     		if (check_id == null || check_id == "") {
     			alert("아이디를 입력해 주세요.");
     			document.Check_id_form.focus();
+    			checkcode = -1;
     			return false;
     		}
     		else if (check_id.search(/\s/) != -1) {
     			alert("아이디는 빈 칸을 포함 할 수 없습니다.");
+    			checkcode = -1;
     			return false;
     		}
     		else if (idLength < 8 || idLength > 20) {
     			alert("아이디는 영문 및 숫자 8 ~ 20자 까지 가능합니다.");
+    			checkcode = -1;
     			return false;
     		}
     		else if (specialCheck.test(check_id)) {
     			alert("아이디는 특수문자를 포함 할 수 없습니다.");
+    			checkcode = -1;
     			return false;
     		} else {
     			$.ajax({
@@ -135,8 +144,10 @@
 						if(result != 1) {
 							alert("사용 가능한 아이디 입니다.");
 							idDupcode = 1;
+							checkcode = 1;
 						} 
 						else if(result == 1) {
+							checkcode = -1;
 							alert("중복된 아이디 입니다.");
 						}
 					} ,
@@ -150,16 +161,15 @@
     	
     	function Check() {
 			
-    		// 1이면 성곡적으로 폼액션, 1이 아닌ㄹ경우 form action 불가
+    		// 1이면 성곡적으로 폼액션, 1이 아닌경우 form action 불가
     		checkcode = 0;
     		
     		if(checkcode == 1)
-    		check_nick_nm();
-    		if(checkcode == 1)
     		check_id();
     		if(checkcode == 1)
-    			
-    		alert('체크코드 : ' + checkcode);
+    		check_nick_nm();
+    		
+    		/* alert('체크코드: ' + checkcode); */
     		
     		if(idDupcode != 1) {
     			alert("아이디 중복확인 인증을 해주세요");
@@ -171,14 +181,16 @@
     			checkcode = -1;
     			return false;
     		}
-    		if(checkcode == 1) {
+    		
+    		if(idDupcode == 1 && nickDupcode == 1) {
     			alert("회원가입 성공");
-    			document.getElementsByName("chk_Nick")[0].setAttribute("type", "submit"); 
+    			document.getElementsByName("chk_Nick")[0].setAttribute("type", "submit");
     		}
     		else
     			return false;
-    		
+
 		}
+    	
         </script>
 </head>
 <body>
