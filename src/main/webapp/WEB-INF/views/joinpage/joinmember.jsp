@@ -247,8 +247,8 @@
 	                                    <!-- Name input-->
 	                                    
 		                                    <div class="form-floating mb-3">
-		                                        <input class="form-control" id="input_id" name="id" type="text" />
-		                                        <button type="button" onclick="check_id()">아이디 중복 확인</button>
+		                                        <input class="form-control" id="input_id" name="id" type="text"/>
+		                                        <button class="id_chk_btn" type="button" onclick="check_id()">아이디 중복 확인</button>
 		                                        <label for="id" >아이디</label>
 		                                    </div>
 	                                    
@@ -262,7 +262,7 @@
 		                                    </div>
 		                                    <div class="form-floating mb-3">
 		                                        <input class="form-control" id="input_nick" name="nick_nm" type="text">
-		                                        <button type="button" onclick="check_nick_nm()">닉네임 중복 확인</button>
+		                                        <button class="nick_chk_btn" type="button" onclick="check_nick_nm()">닉네임 중복 확인</button>
 		                                        <label for="nick_nm">닉네임</label>
 		                                    </div>
 		                                    <div class="form-floating mb-3">
