@@ -94,19 +94,18 @@
 			<input type="hidden" name="id" value="${loginMember.id}">
 			<c:choose>
 				<c:when test="${!empty loginMember.id}">
-					<textarea rows="content" name="com_comment" id="comment_input" placeholder="댓글을 입력해주세요."></textarea>
+					<textarea class="noIdComment" rows="content" name="com_comment" id="comment_input" placeholder="댓글을 입력해주세요."></textarea>
 						<button type="submit" onclick="writeBtn()" class="submit">등록</button>
 					<div>(0 / 200)</div>
 				</c:when>
 				<c:otherwise>
-					<textarea rows="content" placeholder="로그인을 해주세요." disabled="disabled"></textarea>
+					<textarea class="idComment" rows="content" placeholder="로그인을 해주세요." disabled="disabled"></textarea>
 						<button type="submit" onclick="writeBtn()" class="submit">등록</button>
-					<div>(0 / 200)</div>
 				</c:otherwise>
 			</c:choose>
 		</form>
 	</div>
-	<div>
+	<div class="comment_Box">
 		<c:forEach var="c_list" items="${commentList}">
 			<table class="comment_table" >
 				<tr>

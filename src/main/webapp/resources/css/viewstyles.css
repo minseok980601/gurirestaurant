@@ -11313,3 +11313,32 @@ textarea.form-control-lg {
   #comment_date {
   	text-align: right;
   }
+  
+  .idComment {
+  	width: 700px;
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+  	resize: none;
+  	float: left;
+  }
+  
+  .noIdComment {
+  	width: 700px;
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+  	resize: none;
+  	float: left;
+  }
+  
+  .submit {
+  	width: 100px;
+  	height: 55px;
+  	float: left;
+  	margin-top: 20px;
+  	margin-left: 10px;
+  	margin-bottom: 20px;
+  }
+  
+  .comment_Box {
+  	margin-bottom: 20px;
+  }
