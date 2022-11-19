@@ -117,6 +117,15 @@ public class MainController {
 		return "redirect:showpage";
 	}
 	
+	@PostMapping(value = "/selectmycomment")
+	public String restaurantMyCommentSelect(CommentDTO commentDTO, Model model) throws Exception {
+		CommentDTO myComment = restaurantService.restaurantMyCommentSelect(commentDTO);
+		model.addAttribute("myComment", myComment);
+		
+		return "viewpage/restaurantview";
+		
+	}
+	
 	@GetMapping(value = "/searchRestaurant")
 	public String searchPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
 		List<RestaurantDTO> restaurantList = restaurantService.searchPage(scri);

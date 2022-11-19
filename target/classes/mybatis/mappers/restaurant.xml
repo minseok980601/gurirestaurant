@@ -109,6 +109,15 @@
 		]]>
 	</update>
 	
+	<!-- 레스토랑 댓글 수정 -->
+	<select id="restaurantMyCommentSelect" resultType="kr.guri.restaurant.main.dto.CommentDTO" parameterType="kr.guri.restaurant.main.dto.CommentDTO">
+		<![CDATA[
+			SELECT COM_COMMENT 
+			FROM GURI_RESTAURANT_COMMENT 
+			WHERE COM_NUM = #{com_num} AND ID = #{id} AND GR_NUM = #{gr_num}
+		]]>
+	</select>
+	
 	<!-- 검색어 입력 -->
 	<select id="restaurantSearch" resultType="restaurantDTO" parameterType="kr.guri.restaurant.main.dto.Criteria">
 		SELECT *

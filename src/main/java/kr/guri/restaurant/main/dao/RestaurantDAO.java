@@ -110,6 +110,11 @@ public class RestaurantDAO {
 		return sqlSession.update("mapper.restaurant.restaurantCommentCountUp", restaurantDTO);
 	}
 	
+	// 레스토랑 댓글 수정
+	public CommentDTO restaurantMyCommentSelect(CommentDTO commentDTO) throws Exception {
+		return sqlSession.selectOne("mapper.restaurant.restaurantMyCommentSelect", commentDTO);
+	}
+	
 	// 검색어 입력
 	public List<RestaurantDTO> searchPage(SearchCriteria scri) throws Exception {
 		return sqlSession.selectList("mapper.restaurant.restaurantSearch", scri);

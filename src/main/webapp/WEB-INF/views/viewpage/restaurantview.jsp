@@ -96,7 +96,6 @@
 				<c:when test="${!empty loginMember.id}">
 					<textarea class="noIdComment" rows="content" name="com_comment" id="comment_input" placeholder="댓글을 입력해주세요."></textarea>
 						<button type="submit" onclick="writeBtn()" class="submit">등록</button>
-					<div>(0 / 200)</div>
 				</c:when>
 				<c:otherwise>
 					<textarea class="idComment" rows="content" placeholder="로그인을 해주세요." disabled="disabled"></textarea>
@@ -114,6 +113,14 @@
 					</td>
 					<td id="comment_comment">
 						${c_list.com_comment }
+					</td>
+					<td>
+						<form action="${contextPath}/selectmycomment">
+							<input type="hidden" value="${c_list.com_num }">
+							<input type="hidden" value="${c_list.id }">
+							<input type="hidden" value="${c_list.com_comment }">
+							<input type="button" onclick="selectMyComment()" value="수정">
+						</form>
 					</td>
 					<td id="comment_date">
 						${c_list.com_date }
@@ -221,6 +228,15 @@
 				alert("댓글이 작성되었습니다.")}
 			});
 		}
+		
+		$(document).on('click', 'selectMyComment', function(e) {
+			e.prevenDefault();
+			let repleyId = $(this).attr("href");
+			let popUrl = "selectmycomment?com_num=" + '${commentList.com_num}' + "&id=" + '${commentList.id}' + "&gr_num" + '${commentList.gr_num}';
+			let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes"
+			
+			window.open(popUrl, "리뷰 수정", popOption);
+		});
 	</script>
 </body>
 </html>

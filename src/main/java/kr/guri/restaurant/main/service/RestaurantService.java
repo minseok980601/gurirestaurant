@@ -93,6 +93,11 @@ public class RestaurantService {
 		return restaurantDAO.restaurantCommentCountUp(restaurantDTO);
 	}
 	
+	// 레스토랑 댓글 수정
+	public CommentDTO restaurantMyCommentSelect(CommentDTO commentDTO) throws Exception {
+		return restaurantDAO.restaurantMyCommentSelect(commentDTO);
+	}
+	
 	// 검색어 입력
 	public List<RestaurantDTO> searchPage(SearchCriteria scri) throws Exception {
 		List<RestaurantDTO> restaurantList = restaurantDAO.searchPage(scri);
