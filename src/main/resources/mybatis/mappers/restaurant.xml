@@ -85,6 +85,7 @@
 			SELECT *
 			FROM GURI_RESTAURANT_COMMENT
 			WHERE GR_NUM = #{gr_num}
+			ORDER BY COM_DATE DESC
 		]]>
 	</select>
 	
@@ -112,12 +113,20 @@
 	<!-- 레스토랑 댓글 수정 -->
 	<select id="restaurantMyCommentSelect" resultType="kr.guri.restaurant.main.dto.CommentDTO" parameterType="kr.guri.restaurant.main.dto.CommentDTO">
 		<![CDATA[
-			SELECT COM_COMMENT 
+			SELECT COM_COMMENT, COM_NUM, GR_NUM
 			FROM GURI_RESTAURANT_COMMENT 
-			WHERE COM_NUM = #{com_num} AND ID = #{id} AND GR_NUM = #{gr_num}
+			WHERE COM_NUM = #{com_num}
 		]]>
 	</select>
 	
+	<!-- 레스토랑 댓글 수정 하기 -->
+	<update id="restaurantMyCommentModify" parameterType="kr.guri.restaurant.main.dto.CommentDTO">
+		<![CDATA[
+			UPDATE GURI_RESTAURANT_COMMENT 
+			SET COM_COMMENT = #{com_comment}
+			WHERE COM_NUM = #{com_num}
+		]]>
+	</update>
 	<!-- 검색어 입력 -->
 	<select id="restaurantSearch" resultType="restaurantDTO" parameterType="kr.guri.restaurant.main.dto.Criteria">
 		SELECT *

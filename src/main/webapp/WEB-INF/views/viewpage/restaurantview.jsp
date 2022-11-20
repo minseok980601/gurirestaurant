@@ -114,17 +114,20 @@
 					<td id="comment_comment">
 						${c_list.com_comment }
 					</td>
-					<td>
-						<form action="${contextPath}/selectmycomment">
-							<input type="hidden" value="${c_list.com_num }">
-							<input type="hidden" value="${c_list.id }">
-							<input type="hidden" value="${c_list.com_comment }">
-							<input type="button" onclick="selectMyComment()" value="수정">
-						</form>
-					</td>
-					<td id="comment_date">
-						${c_list.com_date }
-					</td>
+					<c:if test="${c_list.id == loginMember.id}">
+						<td>
+							<form action="${contextPath}/selectmycomment?com_num=${c_list.com_num}" method="post">
+								<input type="hidden" value="${c_list.com_num }">
+								<input type="hidden" value="${c_list.id }">
+								<input type="hidden" value="${c_list.gr_num }">
+								<input type="submit" value="수정">
+							</form>
+						
+						</td>
+					</c:if>
+						<td id="comment_date">
+							${c_list.com_date }
+						</td>
 				</tr>
 			</table>
 		</c:forEach>
@@ -229,14 +232,6 @@
 			});
 		}
 		
-		$(document).on('click', 'selectMyComment', function(e) {
-			e.prevenDefault();
-			let repleyId = $(this).attr("href");
-			let popUrl = "selectmycomment?com_num=" + '${commentList.com_num}' + "&id=" + '${commentList.id}' + "&gr_num" + '${commentList.gr_num}';
-			let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes"
-			
-			window.open(popUrl, "리뷰 수정", popOption);
-		});
 	</script>
 </body>
 </html>

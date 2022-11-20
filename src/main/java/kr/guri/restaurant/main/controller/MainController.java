@@ -117,13 +117,28 @@ public class MainController {
 		return "redirect:showpage";
 	}
 	
+//	@GetMapping(value = "/getmycomment")
+//	public String getMyCommentSelect() throws Exception {
+//		return "viewpage/modifycommentview";
+//	}
+	
+	// 레스토랑 댓글 수정
 	@PostMapping(value = "/selectmycomment")
 	public String restaurantMyCommentSelect(CommentDTO commentDTO, Model model) throws Exception {
 		CommentDTO myComment = restaurantService.restaurantMyCommentSelect(commentDTO);
 		model.addAttribute("myComment", myComment);
 		
-		return "viewpage/restaurantview";
+		return "viewpage/modifycommentview";
 		
+	}
+	
+	// 레스토랑 댓글 작성 후 수정
+	@PostMapping(value = "/modifymucomment")
+	public String restaurantMyCommentModify(CommentDTO commentDTO, RedirectAttributes rttr) throws Exception {
+		restaurantService.restaurantMyCommentModify(commentDTO);
+		rttr.addAttribute("gr_num", commentDTO.getGr_num());
+		
+		return "redirect:showpage";
 	}
 	
 	@GetMapping(value = "/searchRestaurant")
