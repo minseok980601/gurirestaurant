@@ -82,7 +82,7 @@
 	<!-- 레스토랑 댓글 조회 -->
 	<select id="restaurantCommentSelect" resultType="kr.guri.restaurant.main.dto.CommentDTO" parameterType="kr.guri.restaurant.main.dto.CommentDTO">
 		<![CDATA[
-			SELECT *
+			SELECT COM_NUM, ID, GR_NUM, COM_COMMENT, COM_DATE
 			FROM GURI_RESTAURANT_COMMENT
 			WHERE GR_NUM = #{gr_num}
 			ORDER BY COM_DATE DESC

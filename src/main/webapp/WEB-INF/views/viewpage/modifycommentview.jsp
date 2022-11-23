@@ -20,8 +20,9 @@
 </script>
 </head>
 <body>
-	<form name="modifyForm" action="${contextPath}/modifymucomment?com_num=${myComment.com_num}" method="post">
-		<input hidden="" value="${myComment.gr_num }">
+	<form name="modifyForm" action="${contextPath}/modifymucomment" method="post">
+		<input type="hidden" name="gr_num" value="${myComment.gr_num }">
+		<input type="hidden" name="com_num" value="${myComment.com_num }">
 		<textarea rows="" cols="" id="com_comment" name="com_comment">${myComment.com_comment }</textarea>
 		<input type="submit" value="수정">
 		<input type="button" class="modify_btn" value="수정">

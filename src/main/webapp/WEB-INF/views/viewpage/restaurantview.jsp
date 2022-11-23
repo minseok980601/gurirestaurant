@@ -116,11 +116,11 @@
 					</td>
 					<c:if test="${c_list.id == loginMember.id}">
 						<td>
-							<form action="${contextPath}/selectmycomment?com_num=${c_list.com_num}" method="post">
-								<input type="hidden" value="${c_list.com_num }">
+							<form name="commentData" action="${contextPath}/selectmycomment?com_num=${c_list.com_num}" method="post">
+								<input id="com_num" name="com_num" type="hidden" value="${c_list.com_num }">
 								<input type="hidden" value="${c_list.id }">
 								<input type="hidden" value="${c_list.gr_num }">
-								<input type="submit" value="수정">
+								<input type="button" onclick="modifyCommentPopUp()" value="수정">
 							</form>
 						
 						</td>
@@ -232,6 +232,14 @@
 			});
 		}
 		
+		function modifyCommentPopUp() {
+ 			var com_num = document.getElementById("com_num").value;
+			let popOption = "width=650px, height=550px, top=300px, left=300px, scrollbars=yes"; 
+			let openUrl = "${contextPath}/selectmycomment?com_num=" + com_num ;
+			window.open(openUrl, '댓글수정창', popOption);
+		}
+		
+		fun
 	</script>
 </body>
 </html>
