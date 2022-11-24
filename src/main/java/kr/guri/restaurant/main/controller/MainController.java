@@ -134,6 +134,7 @@ public class MainController {
 	}
 	
 	// 레스토랑 댓글 작성 후 수정
+	@ResponseBody
 	@PostMapping(value = "/modifymucomment")
 	public String restaurantMyCommentModify(CommentDTO commentDTO, RedirectAttributes rttr) throws Exception {
 		restaurantService.restaurantMyCommentModify(commentDTO);

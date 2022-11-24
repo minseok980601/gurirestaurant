@@ -121,6 +121,7 @@
 								<input type="hidden" value="${c_list.id }">
 								<input type="hidden" value="${c_list.gr_num }">
 								<input type="button" onclick="modifyCommentPopUp()" value="수정">
+								<input type="button" onclick="modifyCommentPopUp2()" value="수정">
 							</form>
 						
 						</td>
@@ -130,8 +131,17 @@
 						</td>
 				</tr>
 			</table>
+				<div id="update_comment_box" class="comment_write_box" style="display: none;">
+					<form action="${contextPath}/modifymucomment" method="post">
+					<input type="hidden" name="gr_num" value="${myComment.gr_num }">
+					<input type="hidden" name="com_num" value="${myComment.com_num }">
+					<textarea class="noIdComment" id="com_comment" name="com_comment">${myComment.com_comment }</textarea>
+					<button type="submit" onclick="writeBtn()" class="submit">등록</button>
+					</form>
+				</div>
 		</c:forEach>
 	</div>
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
@@ -239,7 +249,9 @@
 			window.open(openUrl, '댓글수정창', popOption);
 		}
 		
-		fun
+		function modifyCommentPopUp2() {
+			document.getElementById("update_comment_box").style.display = "block";
+		}
 	</script>
 </body>
 </html>
