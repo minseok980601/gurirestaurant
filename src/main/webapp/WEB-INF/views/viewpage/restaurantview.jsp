@@ -121,7 +121,6 @@
 								<input type="hidden" value="${c_list.id }">
 								<input type="hidden" value="${c_list.gr_num }">
 								<input type="button" onclick="modifyCommentPopUp()" value="수정">
-								<input type="button" onclick="modifyCommentPopUp2()" value="수정">
 							</form>
 						
 						</td>
@@ -131,14 +130,15 @@
 						</td>
 				</tr>
 			</table>
+			<form action="${contextPath}/modifymycomment?com_num=${c_list.com_num}" method="post">
 				<div id="update_comment_box" class="comment_write_box" style="display: none;">
-					<form action="${contextPath}/modifymucomment" method="post">
-					<input type="hidden" name="gr_num" value="${myComment.gr_num }">
-					<input type="hidden" name="com_num" value="${myComment.com_num }">
-					<textarea class="noIdComment" id="com_comment" name="com_comment">${myComment.com_comment }</textarea>
-					<button type="submit" onclick="writeBtn()" class="submit">등록</button>
-					</form>
+					<input type="hidden" name="gr_num" value="${c_list.gr_num }">
+<%-- 								<input type="hidden" name="com_num" value="${c_list.com_num }"> --%>
+					<textarea class="noIdComment" id="modify_input" name="com_comment">${c_list.com_comment }</textarea>
+					<button type="submit">수정</button>
+					<button type="button" onclick="modifyCommentPopUpClose()">취소</button>
 				</div>
+			</form>
 		</c:forEach>
 	</div>
 
@@ -235,23 +235,32 @@
 				if(document.getElementById("comment_input").value.length == 0) {
 					alert("댓글을 입력해주세요.")
 					return false;
+				} else {
+					formObj.attr("action", "${contextPath}/commentwrite");
+					formObj.submit();
+					alert("댓글이 작성되었습니다.")
 				}
-				else {formObj.attr("action", "${contextPath}/commentwrite");
-				formObj.submit();
-				alert("댓글이 작성되었습니다.")}
 			});
 		}
 		
 		function modifyCommentPopUp() {
- 			var com_num = document.getElementById("com_num").value;
-			let popOption = "width=650px, height=550px, top=300px, left=300px, scrollbars=yes"; 
-			let openUrl = "${contextPath}/selectmycomment?com_num=" + com_num ;
-			window.open(openUrl, '댓글수정창', popOption);
-		}
-		
-		function modifyCommentPopUp2() {
+			int comment_box = document.getElementById("update_comment_box");
+			
+			for(var i = 0; i< comment_box.length; i++) {
+				comment_box[i].addEventListener("click", (e)=> {
+					let Parent = e.target.parentElement.parentElement;
+					Parent.classList.toggle("modify_input");
+				});
+			}
+			
+			
 			document.getElementById("update_comment_box").style.display = "block";
 		}
+		
+		function modifyCommentPopUpClose() {
+			document.getElementById("update_comment_box").style.display = "none";
+		}
+		
 	</script>
 </body>
 </html>
