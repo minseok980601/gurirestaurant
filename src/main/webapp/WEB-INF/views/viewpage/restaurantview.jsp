@@ -105,7 +105,7 @@
 		</form>
 	</div>
 	<div class="comment_Box">
-		<c:forEach var="c_list" items="${commentList}">
+		<c:forEach var="c_list" items="${commentList}" varStatus="cl">
 			<table class="comment_table" >
 				<tr>
 					<td id="comment_id">
@@ -115,12 +115,13 @@
 						${c_list.com_comment }
 					</td>
 					<c:if test="${c_list.id == loginMember.id}">
+						
 						<td>
 							<form name="commentData" action="${contextPath}/selectmycomment?com_num=${c_list.com_num}" method="post">
 								<input id="com_num" name="com_num" type="hidden" value="${c_list.com_num }">
 								<input type="hidden" value="${c_list.id }">
 								<input type="hidden" value="${c_list.gr_num }">
-								<input type="button" onclick="modifyCommentPopUp()" value="수정">
+								<input type="button" class="modify_btn" onclick="document.getElementById('update_comment_box${cl.index }').style.display='block'" value="수정">
 							</form>
 						
 						</td>
@@ -130,15 +131,15 @@
 						</td>
 				</tr>
 			</table>
-			<form action="${contextPath}/modifymycomment?com_num=${c_list.com_num}" method="post">
-				<div id="update_comment_box" class="comment_write_box" style="display: none;">
-					<input type="hidden" name="gr_num" value="${c_list.gr_num }">
-<%-- 								<input type="hidden" name="com_num" value="${c_list.com_num }"> --%>
-					<textarea class="noIdComment" id="modify_input" name="com_comment">${c_list.com_comment }</textarea>
-					<button type="submit">수정</button>
-					<button type="button" onclick="modifyCommentPopUpClose()">취소</button>
-				</div>
-			</form>
+				<form action="${contextPath}/modifymycomment?com_num=${c_list.com_num}" method="post">
+					<div id="update_comment_box${cl.index}" class="comment_write_box"  style="display: none;">
+						<input type="hidden" name="gr_num" value="${c_list.gr_num }">
+	<%-- 								<input type="hidden" name="com_num" value="${c_list.com_num }"> --%>
+						<textarea class="noIdComment" id="modify_input" name="com_comment">${c_list.com_comment }</textarea>
+						<button id="modify_button" type="submit">수정</button>
+						<button type="button" onclick="document.getElementById('update_comment_box${cl.index }').style.display='none'">취소</button>
+					</div>
+				</form>
 		</c:forEach>
 	</div>
 
@@ -243,23 +244,9 @@
 			});
 		}
 		
-		function modifyCommentPopUp() {
-			int comment_box = document.getElementById("update_comment_box");
-			
-			for(var i = 0; i< comment_box.length; i++) {
-				comment_box[i].addEventListener("click", (e)=> {
-					let Parent = e.target.parentElement.parentElement;
-					Parent.classList.toggle("modify_input");
-				});
-			}
-			
-			
-			document.getElementById("update_comment_box").style.display = "block";
-		}
-		
-		function modifyCommentPopUpClose() {
+ 		function modifyCommentPopUpClose() {
 			document.getElementById("update_comment_box").style.display = "none";
-		}
+		} 
 		
 	</script>
 </body>
