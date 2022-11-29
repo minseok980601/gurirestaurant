@@ -4246,6 +4246,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-lg .navbar-collapse {
     display: flex !important;
+    margin-left: 35%;
     flex-basis: auto;
   }
   .navbar-expand-lg .navbar-toggler {
@@ -7645,6 +7646,7 @@ textarea.form-control-lg {
 
 .fw-bolder {
   font-weight: bolder !important;
+  text-decoration: none;
 }
 
 .lh-1 {
@@ -11292,6 +11294,17 @@ textarea.form-control-lg {
   	justify-content: center;
   }
   
+  .update_comment_box {
+  	display: flex;
+  	justify-content: center;
+  }
+  
+  .outer_modifyComment_Box {
+  	display: flex;
+  	justify-content: center;
+  	position: relative;
+  }
+  
   #comment_input {
   	width: 800px;
   }
@@ -11307,6 +11320,7 @@ textarea.form-control-lg {
   }
   
   #comment_comment {
+  	width: 560px;
   	text-align: left;
   }
   
@@ -11330,6 +11344,14 @@ textarea.form-control-lg {
   	float: left;
   }
   
+  .modifyCommentBox {
+  	width: 700px;
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+  	resize: none;
+  	float: left;
+  }
+  
   .submit {
   	width: 100px;
   	height: 55px;
@@ -11341,4 +11363,20 @@ textarea.form-control-lg {
   
   .comment_Box {
   	margin-bottom: 20px;
+  }
+  
+  .modify_Success_Btn {
+  	position: absolute;
+  	margin-top: 1%;
+  	margin-left: 1%;
+  }
+  
+  .modify_No_Btn {
+  	position: absolute;
+  	margin-top: 50px;
+  	margin-left: 1%;
+  }
+  
+  .modify_btn {
+  	
   }

@@ -4246,6 +4246,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-lg .navbar-collapse {
     display: flex !important;
+    margin-left: 35%;
     flex-basis: auto;
   }
   .navbar-expand-lg .navbar-toggler {
@@ -7646,6 +7647,7 @@ textarea.form-control-lg {
 
 .fw-bolder {
   font-weight: bolder !important;
+  text-decoration: none;
 }
 
 .lh-1 {
@@ -11314,3 +11316,34 @@ textarea.form-control-lg {
 	float: left;
 	padding: 6px;
 }
+
+.login_input {
+	height: 35px;
+	margin-top: 12px;
+}
+
+.login_id_p {
+	width: 70px;
+	margin-top: 18px;
+}
+
+.login_pw_p {
+	width: 85px;
+	margin-left: 5px;
+	margin-top: 18px;
+}
+
+.login_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 80px;
+	height: 45px;
+}
+
+.joinMember_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 80px;
+	height: 45px;
+}
+

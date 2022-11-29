@@ -26,6 +26,8 @@
         let idDupcode = 0;
         let nickDupcode = 0;
         
+        const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+        
     	function check_nick_nm() {
 			
      		let specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
@@ -122,19 +124,29 @@
     		}
     		else if (check_id.search(/\s/) != -1) {
     			alert("아이디는 빈 칸을 포함 할 수 없습니다.");
+    			document.Check_id_form.focus();
     			checkcode = -1;
     			return false;
     		}
     		else if (idLength < 8 || idLength > 20) {
     			alert("아이디는 영문 및 숫자 8 ~ 20자 까지 가능합니다.");
+    			document.Check_id_form.focus();
     			checkcode = -1;
     			return false;
     		}
     		else if (specialCheck.test(check_id)) {
     			alert("아이디는 특수문자를 포함 할 수 없습니다.");
+    			document.Check_id_form.focus();
     			checkcode = -1;
     			return false;
-    		} else {
+    		}
+    		else if (korean.test(id)) {
+    			alert("아이디는 한글을 포함 할 수 없습니다.");
+    			document.Check_id_form.focus();
+    			checkcode = -1;
+    			return false;
+    		}
+    		else {
     			$.ajax({
     				url : "${contextPath}/checkid" ,
     				type : "post" ,

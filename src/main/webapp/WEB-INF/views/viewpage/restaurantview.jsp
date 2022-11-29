@@ -132,12 +132,13 @@
 				</tr>
 			</table>
 				<form action="${contextPath}/modifymycomment?com_num=${c_list.com_num}" method="post">
-					<div id="update_comment_box${cl.index}" class="comment_write_box"  style="display: none;">
-						<input type="hidden" name="gr_num" value="${c_list.gr_num }">
-	<%-- 								<input type="hidden" name="com_num" value="${c_list.com_num }"> --%>
-						<textarea class="noIdComment" id="modify_input" name="com_comment">${c_list.com_comment }</textarea>
-						<button id="modify_button" type="submit">수정</button>
-						<button type="button" onclick="document.getElementById('update_comment_box${cl.index }').style.display='none'">취소</button>
+					<div class="outer_modifyComment_Box">
+						<div id="update_comment_box${cl.index}" class="update_comment_box"  style="display: none;">
+							<input type="hidden" name="gr_num" value="${c_list.gr_num }">
+							<textarea class="modifyCommentBox" id="modify_input" name="com_comment">${c_list.com_comment }</textarea>
+							<button id="modify_button" class="modify_Success_Btn" type="submit">수정</button>
+							<button type="button" class="modify_No_Btn" onclick="document.getElementById('update_comment_box${cl.index }').style.display='none'">취소</button>
+						</div>
 					</div>
 				</form>
 		</c:forEach>

@@ -127,6 +127,7 @@
 			WHERE COM_NUM = #{com_num}
 		]]>
 	</update>
+	
 	<!-- 검색어 입력 -->
 	<select id="restaurantSearch" resultType="restaurantDTO" parameterType="kr.guri.restaurant.main.dto.Criteria">
 		SELECT *
