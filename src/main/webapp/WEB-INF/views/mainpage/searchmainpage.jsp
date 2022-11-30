@@ -35,34 +35,28 @@
                 <a class="navbar-brand" href="${contextPath}/mainpage">구리 음식점</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                     <form action="${contextPath}/login" method="post" class="d-flex">
                     	<c:choose>
                     		<c:when test="${loginMember.id == null}">
-                    			<p>아이디 : </p>
-                    			<input type="text" name="id" id="id">
-                    			<p>비밀번호 : </p>
-                    			<input type="text" name="pwd" id="pwd">
-                  			    <button class="btn btn-outline-dark" type="submit">
+                     			<p class="login_id_p">아이디 : </p>
+                    			<input class="login_input" type="text" name="id" id="id">
+                    			<p class="login_pw_p">비밀번호 : </p>
+                    			<input class="login_input" type="text" name="pwd" id="pwd">
+                  			    <button class="login_btn" type="submit">
                            		 로그인
+                        		</button>
+                        		<button class="joinMember_btn" type="button" onclick="location.href='${contextPath}/join'">
+                        			회원가입
                         		</button>
                     		</c:when>
                     		<c:otherwise>
-                    			<p>${loginMember.nick_nm }님 반갑습니다.</p>
-                    			<a href="${contextPath}/mypage?id=${loginMember.id}">마이페이지</a>
-                    			<a href="${contextPath}/logout">로그아웃</a>
+                    			<p class="loginMember_nick">${loginMember.nick_nm }님 반갑습니다.</p>
+                    			<button class="myPage_btn" type="button" onclick="location.href='${contextPath}/mypage?id=${loginMember.id}'">
+                    				마이페이지
+                    			</button>
+                    			<button class="logout_btn" type="button" onclick="location.href='${contextPath}/logout'">
+                    				로그아웃
+                    			</button>
                     		</c:otherwise>
                     	</c:choose>
                     </form>

@@ -11347,3 +11347,22 @@ textarea.form-control-lg {
 	height: 45px;
 }
 
+.myPage_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 105px;
+	height: 45px;
+}
+
+.logout_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 80px;
+	height: 45px;
+}
+
+.loginMember_nick {
+	margin-left: 300px;
+	margin-top: 15px;
+}
+

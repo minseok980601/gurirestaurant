@@ -4245,6 +4245,7 @@ textarea.form-control-lg {
     overflow: visible;
   }
   .navbar-expand-lg .navbar-collapse {
+  	margin-left: 400px;
     display: flex !important;
     flex-basis: auto;
   }
@@ -11356,4 +11357,36 @@ html {
 	padding: 0.5rem 1rem;
 	font-size: 1.25rem;
 	border-radius: 0.3rem;
+}
+
+.login_input {
+	height: 35px;
+	margin-top: 12px;
+}
+
+.login_id_p {
+	color: white;
+	width: 70px;
+	margin-top: 18px;
+}
+
+.login_pw_p {
+	color: white;
+	width: 85px;
+	margin-left: 5px;
+	margin-top: 18px;
+}
+
+.login_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 80px;
+	height: 45px;
+}
+
+.joinMember_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 80px;
+	height: 45px;
 }

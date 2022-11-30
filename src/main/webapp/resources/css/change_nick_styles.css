@@ -11331,3 +11331,23 @@ html {
 	border-radius: 0.3rem;
 	display: none;
 }
+
+.myPage_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 105px;
+	height: 45px;
+}
+
+.logout_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 80px;
+	height: 45px;
+}
+
+.loginMember_nick {
+	color: white;
+	margin-left: 740px;
+	margin-top: 15px;
+}

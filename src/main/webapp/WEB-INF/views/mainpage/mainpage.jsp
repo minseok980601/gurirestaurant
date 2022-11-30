@@ -50,11 +50,11 @@
                         		</button>
                     		</c:when>
                     		<c:otherwise>
-                    			<p>${loginMember.nick_nm }님 반갑습니다.</p>
-                    			<button type="button" onclick="location.href='${contextPath}/mypage?id=${loginMember.id}'">
+                    			<p class="loginMember_nick">${loginMember.nick_nm }님 반갑습니다.</p>
+                    			<button class="myPage_btn" type="button" onclick="location.href='${contextPath}/mypage?id=${loginMember.id}'">
                     				마이페이지
                     			</button>
-                    			<button type="button" onclick="location.href='${contextPath}/logout'">
+                    			<button class="logout_btn" type="button" onclick="location.href='${contextPath}/logout'">
                     				로그아웃
                     			</button>
                     		</c:otherwise>

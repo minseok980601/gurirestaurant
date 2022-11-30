@@ -7649,6 +7649,7 @@ textarea.form-control-lg {
 
 .fw-bolder {
   font-weight: bolder !important;
+  text-decoration: none;
 }
 
 .lh-1 {
@@ -11315,4 +11316,23 @@ textarea.form-control-lg {
 
 .loginMember_ul {
 	list-style: none;
+}
+
+.myPage_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 105px;
+	height: 45px;
+}
+
+.logout_btn {
+	margin-top: 7px;
+	margin-left: 10px;
+	width: 80px;
+	height: 45px;
+}
+
+.loginMember_nick {
+	margin-left: 740px;
+	margin-top: 15px;
 }
