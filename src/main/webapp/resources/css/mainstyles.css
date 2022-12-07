@@ -11347,6 +11347,12 @@ textarea.form-control-lg {
 	height: 45px;
 }
 
+.lobin_Member_Div_Box {
+	display: flex! important;
+	margin-left: 90%;
+	flex-basis: auto;
+}
+
 .myPage_btn {
 	margin-top: 7px;
 	margin-left: 10px;
@@ -11362,7 +11368,7 @@ textarea.form-control-lg {
 }
 
 .loginMember_nick {
-	margin-left: 300px;
+	width: 155px;
 	margin-top: 15px;
 }
 

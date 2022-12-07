@@ -50,6 +50,7 @@
                         		</button>
                     		</c:when>
                     		<c:otherwise>
+                    		<div class="lobin_Member_Div_Box">
                     			<p class="loginMember_nick">${loginMember.nick_nm }님 반갑습니다.</p>
                     			<button class="myPage_btn" type="button" onclick="location.href='${contextPath}/mypage?id=${loginMember.id}'">
                     				마이페이지
@@ -57,6 +58,7 @@
                     			<button class="logout_btn" type="button" onclick="location.href='${contextPath}/logout'">
                     				로그아웃
                     			</button>
+                    		</div>
                     		</c:otherwise>
                     	</c:choose>
                     </form>

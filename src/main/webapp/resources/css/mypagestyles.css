@@ -4246,6 +4246,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-lg .navbar-collapse {
     display: flex !important;
+    margin-left: 60%;
     flex-basis: auto;
   }
   .navbar-expand-lg .navbar-toggler {
@@ -11333,6 +11334,6 @@ textarea.form-control-lg {
 }
 
 .loginMember_nick {
-	margin-left: 740px;
+	width: 155px;
 	margin-top: 15px;
 }

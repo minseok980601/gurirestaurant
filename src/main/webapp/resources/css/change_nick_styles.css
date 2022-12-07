@@ -4245,6 +4245,7 @@ textarea.form-control-lg {
     overflow: visible;
   }
   .navbar-expand-lg .navbar-collapse {
+  	margin-left: 60%;
     display: flex !important;
     flex-basis: auto;
   }
@@ -11348,6 +11349,6 @@ html {
 
 .loginMember_nick {
 	color: white;
-	margin-left: 740px;
+	width: 155px;
 	margin-top: 15px;
 }
