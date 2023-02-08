@@ -102,27 +102,27 @@
 			
     		let specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
     		
-    		let check_id = document.getElementById('input_id').value;
-    		check_id = check_id.toUpperCase();
+    		let id = document.getElementById('input_id').value;
+    		id = id.toUpperCase();
     		let idLength = 0;
     		
-    		for(var i = 0; i < check_id.length; i++) {
-    			id = check_id.charAt(i);
+    		for(var i = 0; i < id.length; i++) {
+    			id_ = id.charAt(i);
     			
-    			if(escape(id).length > 4) {
+    			if(escape(id_).length > 4) {
     				idLength += 2;
     			} else {
     				idLength += 1;
     			}
     		}
     		
-    		if (check_id == null || check_id == "") {
+    		if (id == null || id == "") {
     			alert("아이디를 입력해 주세요.");
     			document.Check_id_form.focus();
     			checkcode = -1;
     			return false;
     		}
-    		else if (check_id.search(/\s/) != -1) {
+    		else if (id.search(/\s/) != -1) {
     			alert("아이디는 빈 칸을 포함 할 수 없습니다.");
     			document.Check_id_form.focus();
     			checkcode = -1;
@@ -134,13 +134,13 @@
     			checkcode = -1;
     			return false;
     		}
-    		else if (specialCheck.test(check_id)) {
+    		else if (specialCheck.test(id)) {
     			alert("아이디는 특수문자를 포함 할 수 없습니다.");
     			document.Check_id_form.focus();
     			checkcode = -1;
     			return false;
     		}
-    		else if (korean.test(id)) {
+    		else if (korean.test(id_)) {
     			alert("아이디는 한글을 포함 할 수 없습니다.");
     			document.Check_id_form.focus();
     			checkcode = -1;
@@ -150,22 +150,22 @@
     			$.ajax({
     				url : "${contextPath}/checkid" ,
     				type : "post" ,
-    				dataType  :"JSON" ,
-    				data : {"id" : check_id} ,
-    				success : function (result) {
-						if(result != 1) {
-							alert("사용 가능한 아이디 입니다.");
-							idDupcode = 1;
-							checkcode = 1;
-						} 
-						else if(result == 1) {
-							checkcode = -1;
-							alert("중복된 아이디 입니다.");
-						}
-					} ,
-					error : function (err) {
-						alert("아이디 입력 오류");
-					}
+    				dataType: "JSON" ,
+    				data : {"id" : id} ,
+    				success : function(result) {
+    					if(result != 1) {
+    						alert("사용 가능한 아이디 입니다.");
+    						idDupcode  = 1;
+    						checkcode = 1;
+    					} 
+    					else if(result == 1) {
+    						alert("중복된 아이디입니다.");
+    						checkcode = -1;
+    					}
+    				} ,
+    				error : function(err) {
+    					alert("닉네임 변경 오류");
+    				}
     			});
      		}
     		

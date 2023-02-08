@@ -13,7 +13,7 @@ public class PagingDTO {
 	private int lastPage;		// 마지막 페이지
 	private int start;			// SQL 쿼리에 쓸 start, end
 	private int end;
-	private int cntPage = 8;
+	private int cntPage = 5;
 	private String id;
 	
 	public String getId() {

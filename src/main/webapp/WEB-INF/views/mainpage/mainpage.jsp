@@ -41,7 +41,7 @@
                     			<p class="login_id_p">아이디 : </p>
                     			<input class="login_input" type="text" name="id" id="id">
                     			<p class="login_pw_p">비밀번호 : </p>
-                    			<input class="login_input" type="text" name="pwd" id="pwd">
+                    			<input class="login_input" type="password" name="pwd" id="pwd">
                   			    <button class="login_btn" type="submit">
                            		 로그인
                         		</button>

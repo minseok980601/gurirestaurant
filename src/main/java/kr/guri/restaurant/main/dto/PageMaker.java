@@ -18,7 +18,7 @@ public class PageMaker extends Criteria{
 	
 	private String id;
 	
-	private int displayPageNum = 10;
+	private int displayPageNum = 5;
 	
 	private Criteria cri;
 

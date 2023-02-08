@@ -105,8 +105,7 @@ public class RestaurantService {
 	
 	// 검색어 입력
 	public List<RestaurantDTO> searchPage(SearchCriteria scri) throws Exception {
-		List<RestaurantDTO> restaurantList = restaurantDAO.searchPage(scri);
-		return restaurantList;
+		return restaurantDAO.searchPage(scri);
 	}
 	
 	// 검색어 총 개수
