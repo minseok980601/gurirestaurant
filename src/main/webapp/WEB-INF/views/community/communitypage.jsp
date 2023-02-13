@@ -96,13 +96,15 @@
 					                    </thead>
 					                    <tbody>
 					                        <tr>
-					                            <td>1</td>
-					                            <td>안녕하세요</td>
-					                            <td>테스트</td>
-					                            <td>5</td>
-					                            <td>3</td>
-					                            <td>0</td>
-					                            <td>2023/02/08</td>
+					                        	<c:forEach var="board" items="${communityList}" begin="0" end="9">
+						                            <td>${board.post_num }</td>
+						                            <td>${board.post_title }</td>
+						                            <td>${board.post_id }</td>
+						                            <td>${board.post_hits }</td>
+						                            <td>${board.post_good }</td>
+						                            <td>${board.post_bad }</td>
+						                            <td>${board.post_date }</td>
+					                            </c:forEach>
 					                        </tr>
 					                    </tbody>
 					                </table>   

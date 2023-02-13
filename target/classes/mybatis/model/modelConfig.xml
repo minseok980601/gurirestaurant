@@ -10,5 +10,6 @@
 		<typeAlias type="kr.guri.restaurant.member.dto.MemberDTO" alias="memberDTO"/>
 		<typeAlias type="kr.guri.restaurant.main.dto.HeartDTO" alias="heartDTO"/>
 		<typeAlias type="kr.guri.restaurant.main.dto.PagingDTO" alias="pagingDTO"/>
+		<typeAlias type="kr.guri.restaurant.community.dto.CommunityDTO" alias="communityDTO"/>
 	</typeAliases>
 </configuration>
