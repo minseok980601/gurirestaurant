@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.guri.restaurant.community.dto.CommunityDTO;
 import kr.guri.restaurant.community.service.CommunityService;
@@ -26,5 +27,17 @@ public class CommunityController {
 		model.addAttribute("communityList", communityList);
 		
 		return "community/communitypage";
+	}
+	
+	@GetMapping(value ="/uploadboard")
+	public String uploadboard() throws Exception {
+		return "community/uploadboardpage";
+	}
+	
+	@PostMapping(value = "/successuploadboard")
+	public String successUploadBoard(CommunityDTO communityDTO) throws Exception {
+		communityService.uploadBoard(communityDTO);
+		
+		return "redirect:community";
 	}
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>커뮤니티 페이지</title>
+<title>게시글 작성 페이지</title>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
@@ -82,33 +82,22 @@
                 	<div class="container">
 						<div class="row">
 							<div class="col-md-9">
-					    	 <table class="community_table" style="width: 500px;">
+								<form action="${contextPath}/successuploadboard?post_id=${loginMember.id}" method="post">
+					    	 		<table class="community_table" style="width: 500px;">
 					                    <thead>
 					                        <tr>
-					                            <th>번호</th>
 					                            <th>제목</th>
-					                            <th>작성자</th>
-					                            <th>조회수</th>
-					                            <th>추천</th>
-					                            <th>반대</th>
-					                            <th>작성일</th>
+					                        </tr>
+					                        <tr>
+					                        	<td><input type="text" id="post_title" name="post_title"></td>
+					                        </tr>
+					                        <tr>
+					                        	<td><textarea rows="10" cols="50" id="post_content" name="post_content"></textarea></td>
 					                        </tr>
 					                    </thead>
-					                    <tbody>
-					                    <c:forEach var="board" items="${communityList}" begin="0" end="9">
-					                        <tr>
-					                            <td>${board.post_num }</td>
-					                            <td>${board.post_title }</td>
-					                            <td>${board.post_id }</td>
-					                            <td>${board.post_hits }</td>
-					                            <td>${board.post_good }</td>
-					                            <td>${board.post_bad }</td>
-					                            <td>${board.post_date }</td>
-					                        </tr>
-				                        </c:forEach>
-					                    </tbody>
 					                </table>
-					                <input type="button" value="글 작성" onclick="location.href='${contextPath}/uploadboard?post_id=${loginMember.id}'">   
+					                <input type="submit" value="글 작성">
+					            </form>   
 							</div>
 						</div>
 					</div>

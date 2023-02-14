@@ -17,4 +17,8 @@ public class CommunityService {
 	public List<CommunityDTO> listCommunity(CommunityDTO communityDTO) throws Exception {
 		return communityDAO.listCommunity(communityDTO);
 	}
+	
+	public void uploadBoard(CommunityDTO communityDTO) throws Exception {
+		communityDAO.uploadboard(communityDTO);
+	}
 }

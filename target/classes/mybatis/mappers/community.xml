@@ -21,5 +21,12 @@
 			ORDER BY post_num DESC
 		]]>
 	</select>
+	
+	<insert id="uploadboard" parameterType="communityDTO">
+		<![CDATA[
+			INSERT INTO community_board(POST_NUM, POST_TITLE, POST_ID, POST_HITS, POST_GOOD, POST_BAD)
+			VALUES ((SELECT nvl(max(post_num), 0) + 1 FROM COMMUNITY_BOARD), #{post_title}, #{post_id}, '0', '0', '0')
+		]]>
+	</insert>
 
 </mapper>
